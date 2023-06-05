@@ -1,0 +1,11 @@
+<%= simple_form_for @friend do |f| %>
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <%= f.input :age %>
+    <%= f.input :location %>
+    <%= f.input :bio %>
+    <%= f.input :interests %>
+    <%= f.input :availability %>
+    <%= f.input :image %>
+    <%= f.button :submit, 'Create Friend', class: 'btn btn-primary mt-3' %>
+  <% end %>

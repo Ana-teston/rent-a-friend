@@ -14,9 +14,10 @@ class FriendsController < ApplicationController
 
   def create
     @friend = Friend.new(friends_param)
+    @friend.user = current_user
 
     if @friend.save
-      redirect_to friends_path(@friend), notice: "friend created"
+      redirect_to friend_path(@friend), notice: "friend created"
     else
       render :new, status: :unprocessable_entity
     end
