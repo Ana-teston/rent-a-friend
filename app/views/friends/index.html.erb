@@ -1,0 +1,10 @@
+<h1>All Friends</h1>
+
+<% @friends.each do |friend| %>
+  <p>First name: <%= friend.first_name%></p>
+  <p>Last name: <%= friend.last_name%></p>
+  <p>Availability: <%= friend.availability %></p>
+  <p>Interests: <%= friend.interests %></p>
+
+<%= link_to "Click Here", friend_path(friend.id) %>
+<% end %>
