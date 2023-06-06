@@ -4,4 +4,9 @@
 <p><%= @friend.bio %></p>
 <p><%= @friend.location %></p>
 <p><%= @friend.interests %></p>
-<p><%= @friend.availability %></p>
+<p><%= @friend.start_date %></p>
+<p><%= @friend.end_date %></p>
+<p><%= @friend.price%></p>
+<p><%= @friend.activity%></p>
+
+<%= render 'bookings/form', friend: @friend, booking: @booking %>
