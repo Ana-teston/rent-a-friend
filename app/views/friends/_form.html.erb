@@ -1,3 +1,4 @@
+<div class="container">
 <%= simple_form_for @friend do |f| %>
     <%= f.input :first_name %>
     <%= f.input :last_name %>
@@ -6,6 +7,9 @@
     <%= f.input :bio %>
     <%= f.input :interests %>
     <%= f.input :availability %>
+    <%= f.input :activity %>
+    <%= f.input :price %>
     <%= f.input :image %>
     <%= f.button :submit, 'Create Friend', class: 'btn btn-primary mt-3' %>
   <% end %>
+</div>

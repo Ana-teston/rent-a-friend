@@ -1,13 +1,17 @@
 class BookingsController < ApplicationController
   def new
     @booking = Booking.new
-    @booking.friend = params[:friend_id]
+    @friend = Friend.find(params[:friend_id])
+    @booking.friend = @friend
   end
 
   def create
     @booking = Booking.new(bookings_param)
-    @booking.friend = params[:friend_id]
+    @friend = Friend.find(params[:friend_id])
+    @booking.friend = @friend
     @booking.user = current_user
+    @booking.activity = @friend.activity
+    @booking.num_of_days = (params[:booking]["end_date(3i)"].to_i - params[:booking]["start_date(3i)"].to_i)
     if @booking.save
       redirect_to friend_path(@booking.friend), notice: "booking created"
     else
@@ -22,7 +26,6 @@ class BookingsController < ApplicationController
   private
 
   def bookings_param
-    params.require(:booking).permit(:date, :activity)
+    params.require(:booking).permit(:activity, :start_date, :end_date, :num_of_days)
   end
-
 end
