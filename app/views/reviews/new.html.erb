@@ -1,0 +1,10 @@
+<h1>new review <%= @friend.first_name %></h1>
+<p>Find me in app/views/reviews/new.html.erb</p>
+<div class="container">
+  <%= simple_form_for [@friend, @booking, @review] do |f| %>
+  <%= f.input :title %>
+  <%= f.input :body %>
+  <%= f.input :rating %>
+  <%= f.button :submit, 'Create Review', class: 'btn btn-primary mt-3' %>
+<% end %>
+</div>
