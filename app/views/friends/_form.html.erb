@@ -6,7 +6,8 @@
     <%= f.input :location %>
     <%= f.input :bio %>
     <%= f.input :interests %>
-    <%= f.input :availability %>
+    <%= f.input :start_date, start_year: Time.now.year %>
+    <%= f.input :end_date, start_year: Time.now.year %>
     <%= f.input :activity %>
     <%= f.input :price %>
     <%= f.input :image %>

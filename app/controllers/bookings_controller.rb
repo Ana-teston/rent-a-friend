@@ -1,9 +1,4 @@
 class BookingsController < ApplicationController
-  def new
-    @booking = Booking.new
-    @friend = Friend.find(params[:friend_id])
-    @booking.friend = @friend
-  end
 
   def create
     @booking = Booking.new(bookings_param)
@@ -13,7 +8,7 @@ class BookingsController < ApplicationController
     @booking.activity = @friend.activity
     @booking.num_of_days = (params[:booking]["end_date(3i)"].to_i - params[:booking]["start_date(3i)"].to_i)
     if @booking.save
-      redirect_to friend_path(@booking.friend), notice: "booking created"
+      redirect_to friend_path(@booking.friend), notice: "Booking successfully created"
     else
       render :new, status: :unprocessable_entity
     end

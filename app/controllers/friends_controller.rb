@@ -4,8 +4,8 @@ class FriendsController < ApplicationController
   end
 
   def show
-    puts params[:id]
     @friend = Friend.find(params[:id])
+    @booking = Booking.new
   end
 
   def new
@@ -17,7 +17,7 @@ class FriendsController < ApplicationController
     @friend.user = current_user
 
     if @friend.save
-      redirect_to friend_path(@friend), notice: "friend created"
+      redirect_to friend_path(@friend), notice: "Friend created"
     else
       render :new, status: :unprocessable_entity
     end
@@ -26,6 +26,6 @@ class FriendsController < ApplicationController
   private
 
   def friends_param
-    params.require(:friend).permit(:availability, :interests, :first_name, :last_name, :image, :age, :bio, :location, :price, :activity)
+    params.require(:friend).permit(:interests, :first_name, :last_name, :image, :age, :bio, :location, :price, :activity, :start_date, :end_date)
   end
 end
