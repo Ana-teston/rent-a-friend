@@ -1,7 +1,7 @@
 class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :friend
-
+  has_one :review, dependent: :destroy
   validates :activity, :start_date, :end_date, presence: true
 
   def start_date_before_end_date

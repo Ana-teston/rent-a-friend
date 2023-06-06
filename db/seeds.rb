@@ -9,6 +9,7 @@
 require "faker"
 
 puts "Cleaning database..."
+Review.destroy_all
 Booking.destroy_all
 Friend.destroy_all
 User.destroy_all
@@ -56,5 +57,22 @@ User.all.each do |user|
 end
 
 puts "Created #{Booking.count} bookings"
+
+puts "Creating reviews..."
+
+User.all.each do |user|
+  Friend.all.each do |friend|
+    Booking.all.each do |booking|
+      Review.create!(title: Faker::Lorem.sentence(word_count: 3),
+      body: Faker::Lorem.paragraph(sentence_count: 2),
+      rating: Faker::Number.within(range: 1..5),
+      user: user,
+      friend: friend,
+      booking: booking)
+    end
+  end
+end
+
+puts "Created #{Review.count} reviews"
 
 puts "Finished!"

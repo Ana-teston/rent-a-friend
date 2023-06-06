@@ -1,7 +1,7 @@
 class Friend < ApplicationRecord
   belongs_to :user
-  has_many :bookings
-  has_many :reviews
+  has_many :bookings, dependent: :destroy
+  has_many :reviews, dependent: :destroy
 
   validates :start_date, :end_date, :interests,
   :activity, :location, :bio, :image, :first_name, :last_name, presence: true
