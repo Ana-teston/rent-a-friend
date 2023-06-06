@@ -10,3 +10,15 @@
 <p><%= @friend.activity%></p>
 
 <%= render 'bookings/form', friend: @friend, booking: @booking %>
+
+<h2>Reviews</h2>
+  <ul>
+    <% @reviews.each do |review| %>
+      <li>
+        <h3><%= review.title %></h3>
+        <p><%= review.body %></p>
+        <p><%= review.rating %></p>
+        <!-- Other review details -->
+      </li>
+    <% end %>
+  </ul>
