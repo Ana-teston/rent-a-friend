@@ -3,7 +3,7 @@ class Friend < ApplicationRecord
   has_many :bookings
 
   validates :start_date, :end_date, :interests,
-  :activity, :location, :bio, :images, :first_name, :last_name, presence: true
+  :activity, :location, :bio, :image, :first_name, :last_name, presence: true
   validates :age, presence: true, numericality: { only_integer: true, greater_than: 18 }
   validates :price, presence: true, numericality: { only_integer: true, greater_than: 0 }
 
