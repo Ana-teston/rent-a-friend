@@ -12,6 +12,8 @@
 
     <%= link_to "DELETE THIS BOOKING", booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "you sure?"}, method: :delete, class: "btn btn-danger text-white" %>
     <%= link_to "EDIT", edit_friend_booking_path(booking.friend, booking), class: "btn btn-danger text-white" %>
+    <%= link_to "Add a review", new_friend_booking_review_path(booking.friend, booking) %>
+
     <hr>
   <% end %>
 </div>

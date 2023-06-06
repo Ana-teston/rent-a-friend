@@ -9,6 +9,9 @@
 <p><%= @friend.price%></p>
 <p><%= @friend.activity%></p>
 
+<hr>
+<p><%= @friend.user.first_name%> <%= @friend.user.last_name%></p>
+
 <%= render 'bookings/form', friend: @friend, booking: @booking %>
 
 <h2>Reviews</h2>
@@ -22,3 +25,11 @@
       </li>
     <% end %>
   </ul>
+
+
+<% if policy(@friend).edit? %>
+  <%= link_to "Edit", edit_friend_path(@friend), class: "btn btn-primary" %>
+<% end %>
+<% if policy(@friend).destroy? %>
+  <%= link_to "Delete", friend_path(@friend), data: {turbo_method: :delete, turbo_confirm: "you sure?" }, method: :delete, class: "btn btn-danger" %>
+<% end %>
