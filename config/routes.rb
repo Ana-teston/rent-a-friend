@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resources :friends, only: [:index, :new, :create, :show] do
     resources :bookings, only: [:create, :destroy]
   end
+  resources :bookings, only: [:index]
 end
