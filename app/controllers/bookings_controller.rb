@@ -1,6 +1,7 @@
 class BookingsController < ApplicationController
   def index
-    @bookings = Booking.all
+
+    @bookings = policy_scope(Booking)
   end
 
   def create
@@ -10,6 +11,9 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.activity = @friend.activity
     @booking.num_of_days = (params[:booking]["end_date(3i)"].to_i - params[:booking]["start_date(3i)"].to_i)
+
+    authorize @booking
+
     if @booking.save
       redirect_to bookings_path, notice: "Booking successfully created"
     else
@@ -20,12 +24,13 @@ class BookingsController < ApplicationController
   def edit
     @booking = Booking.find(params[:id])
     @friend = Friend.find(params[:friend_id])
-
+    authorize @booking
   end
 
   def update
     @booking = Booking.find(params[:id])
     @booking.update(bookings_param)
+    authorize @booking
 
     redirect_to bookings_path, notice: "Booking successfully updated"
   end
@@ -33,6 +38,8 @@ class BookingsController < ApplicationController
   def destroy
     @booking = Booking.find(params[:id])
     @booking.destroy
+    authorize @booking
+
     redirect_to bookings_path, notice: "Booking successfully deleted"
 
   end
