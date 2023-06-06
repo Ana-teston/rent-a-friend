@@ -1,0 +1,13 @@
+<div class="container">
+<%= simple_form_for [@friend, @booking] do |f| %>
+  <div class="row">
+  <div class="col">
+  <%= f.input :start_date %>
+  </div>
+  <div class="col">
+  <%= f.input :end_date %>
+  </div>
+  </div>
+  <%= f.button :submit, class:"btn btn-primary" %>
+<% end %>
+</div>

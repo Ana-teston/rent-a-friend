@@ -2,10 +2,7 @@ class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :friend
 
-  validates :start_date, presence: true
-  validates :end_date, presence: true
-  validates :start_date_before_end_date, presence: true
-  validates :activity, presence: true
+  validates :activity, :start_date, :end_date, presence: true
 
   def start_date_before_end_date
     return if start_date.blank? || end_date.blank?
