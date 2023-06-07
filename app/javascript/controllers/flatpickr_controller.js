@@ -7,7 +7,11 @@ export default class extends Controller {
   static targets = [ "startTime", "endTime" ]
 
   connect() {
-    flatpickr(this.startTimeTarget, {})
-    flatpickr(this.endTimeTarget, {})
+    flatpickr(this.startTimeTarget, {
+      minDate: "today",
+    })
+    flatpickr(this.endTimeTarget, {
+      minDate: new Date().fp_incr(1),
+    })
   }
 }

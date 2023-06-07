@@ -9,8 +9,8 @@ class FriendsController < ApplicationController
     @booking = Booking.new
     @review = Review.new
     @reviews = Review.where(friend: params[:id])
-    @avg = @reviews.map { |review| review.rating }.sum / @reviews.length
-    
+    @avg = @reviews.map { |review| review.rating }.sum / @reviews.length unless @reviews.empty?
+
     @review.friend = @friend
     @review.booking = @booking
     authorize @friend
@@ -30,21 +30,17 @@ class FriendsController < ApplicationController
     @friend = Friend.find(params[:id])
     @friend.update(friends_param)
     authorize @friend
-    redirect_to friend_path(@friend), notice:"updated"
+    redirect_to friend_path(@friend), notice: "Friend updated successfully"
   end
 
   def create
-
-    cloudinary_response = Cloudinary::Uploader.upload(params[:friend][:image])
-    image_key = cloudinary_response["public_id"]
-
-    @friend = Friend.new(friends_param.merge(image: image_key))
+    @friend = Friend.new(friends_param)
     @friend.user = current_user
 
     authorize @friend
 
     if @friend.save
-      redirect_to friend_path(@friend), notice: "Friend created"
+      redirect_to friend_path(@friend), notice: "Friend created successfully"
     else
       render :new, status: :unprocessable_entity
     end

@@ -2,20 +2,19 @@
   <h1>My Bookings</h1>
 
   <% @bookings.each do |booking| %>
-    <p>Profile: <%= booking.user.first_name %> <%= booking.user.last_name %></p>
     <p>Friend: <%= booking.friend.last_name %></p>
-    <%= booking.friend.activity %>
-    <%= booking.start_date %>
-    <%= booking.end_date %>
-    <%= booking.num_of_days %>
-    <%= booking.friend.price * booking.num_of_days %>
+    <p>Activity:<%= booking.friend.activity %></p>
+    <p>Start date:<%= booking.start_date %></p>
+    <p>End Date:<%= booking.end_date %></p>
+    <p>Number of days: <%= booking.num_of_days %></p>
+    <p>Price: $<%= booking.friend.price * booking.num_of_days %></p>
     <% if policy(booking).edit? %>
-      <%= link_to "EDIT", edit_friend_booking_path(booking.friend, booking), class: "btn btn-danger text-white" %>
+      <%= link_to "Edit booking", edit_friend_booking_path(booking.friend, booking), class: "btn btn-primary text-white" %>
     <% end %>
     <% if policy(booking).destroy? %>
-      <%= link_to "DELETE THIS BOOKING", booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "you sure?"}, method: :delete, class: "btn btn-danger text-white" %>
+      <%= link_to "Delete the booking", booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "you sure?"}, method: :delete, class: "btn btn-danger text-white" %>
     <% end %>
-    <%= link_to "Add a review", new_friend_booking_review_path(booking.friend, booking) %>
+    <%= link_to "Add a review", new_friend_booking_review_path(booking.friend, booking), class:"btn btn-info" %>
     <hr>
   <% end %>
 </div>
