@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  before_action :authenticate_user!
   def new
     @friend = Friend.find(params[:friend_id])
     @booking = Booking.find(params[:booking_id])
