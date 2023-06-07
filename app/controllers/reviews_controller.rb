@@ -6,6 +6,7 @@ class ReviewsController < ApplicationController
     @review = Review.new
     @review.friend = @friend
     @review.booking = @booking
+    authorize @review
   end
 
   def create
@@ -15,6 +16,7 @@ class ReviewsController < ApplicationController
     @review.friend = @friend
     @review.booking = @booking
     @review.user = current_user
+    authorize @review
 
     if @review.save
       redirect_to friend_path(@friend), notice: "Review successfully created"
@@ -27,6 +29,7 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @review.destroy
     redirect_to friend_path(@review.friend)
+    authorize @review
   end
 
   private

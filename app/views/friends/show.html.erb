@@ -8,6 +8,7 @@
 <p><%= @friend.end_date %></p>
 <p><%= @friend.price%></p>
 <p><%= @friend.activity%></p>
+<p><%= @friend.avg_rating %></p>
 
 <hr>
 <p><%= @friend.user.first_name%> <%= @friend.user.last_name%></p>
@@ -22,6 +23,9 @@
         <p><%= review.body %></p>
         <p><%= review.rating %></p>
         <!-- Other review details -->
+      <% if policy(review).destroy? %>
+        <%= link_to "Delete", review_path(review), data: {turbo_method: :delete, turbo_confirm: "you sure?" }, method: :delete, class: "btn btn-danger" %>
+      <% end %>
       </li>
     <% end %>
   </ul>
