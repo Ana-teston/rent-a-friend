@@ -1,13 +1,34 @@
 <div class="container">
+
   <h1>All Friends</h1>
+        <div class="row">
 
   <% @friends.each do |friend| %>
-    <p>First name: <%= friend.first_name%></p>
-    <p>Last name: <%= friend.last_name%></p>
-    <p>Interests: <%= friend.interests %></p>
-    <p>Start date: <%= friend.start_date %></p>
-    <p>End date: <%= friend.end_date %></p>
+            <div class="col-md-4">
 
-  <%= link_to "Click Here", friend_path(friend.id) %>
+                <div class="card-sl">
+
+                    <div class="card-image">
+                        <img
+                            src="<%= friend.image %>" />
+                    </div>
+
+                    <div class="card-heading">
+                        <%= friend.first_name %> <%= friend.last_name %>
+                    </div>
+                    <div class="card-text">
+                        <%= friend.bio %>
+                    </div>
+                    <div class="card-text">
+                        <i class="fas fa-dollar-sign"></i> <%= friend.price %> <i class="fas fa-map-pin"></i> <%= friend.location %>
+                    </div>
+
+                      <%= link_to "Click Here", friend_path(friend.id), class: "card-button" %>
+
+                </div>
+    </div>
+
+
   <% end %>
-</div>
+
+        </div>
