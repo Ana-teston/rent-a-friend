@@ -7,7 +7,9 @@ class FriendsController < ApplicationController
     @friend = Friend.find(params[:id])
     @booking = Booking.new
     @review = Review.new
-    @reviews = Review.all
+    @reviews = Review.where(friend: params[:id])
+    @avg = @reviews.map { |review| review.rating }.sum / @reviews.length
+    
     @review.friend = @friend
     @review.booking = @booking
     authorize @friend
