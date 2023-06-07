@@ -21,7 +21,7 @@ puts "Creating a new user..."
   last_name: Faker::Name.last_name,
   email: Faker::Internet.email,
   password: "123456",
-  birth_date: Faker::Date.birthday(min_age: 18, max_age: 65))
+  birth_date: Faker::Date.birthday(min_age: 19, max_age: 65))
 end
 
 puts "Created #{User.count} users"
@@ -30,7 +30,7 @@ puts "Creating friends..."
 User.all.each do |user|
     friend = Friend.new(first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    age: Faker::Number.within(range: 18..65),
+    age: Faker::Number.within(range: 19..65),
     bio: Faker::Lorem.paragraph(sentence_count: 2),
     location: Faker::Address.city,
     interests: Faker::Lorem.paragraph(sentence_count: 2),
