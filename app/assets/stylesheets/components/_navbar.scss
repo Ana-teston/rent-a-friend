@@ -11,3 +11,16 @@
   width: 80px;
   border-radius: 50%;
 }
+
+.friends-icon,
+.bookmarks-icon {
+  float: right;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+
+.messages-icon {
+  float: right;
+  vertical-align: middle;
+  margin-left: 5px;
+}

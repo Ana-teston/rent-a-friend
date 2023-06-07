@@ -1,3 +1,7 @@
+<head>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
     <%= link_to root_path, class: "navbar-brand" do %>
@@ -12,13 +16,21 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item active">
-            <%= link_to "Friends", friends_path, class: "nav-link" %>
+            <%= link_to friends_path, class: "nav-link" do %>
+              <ion-icon class="friends-icon" name="people-outline"></ion-icon>
+              Friends
+            <% end %>
           </li>
           <li class="nav-item active">
-            <%= link_to "My Bookings", bookings_path, class: "nav-link" %>
+             <%= link_to bookings_path, class: "nav-link bookings-link" do %>
+              My Bookings <ion-icon class="bookmarks-icon" name="bookmarks-outline"></ion-icon>
+            <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to "Messages", "#", class: "nav-link" %>
+            <%= link_to "#", class: "nav-link" do %>
+              <ion-icon class="messages-icon" name="chatbox-ellipses-outline"></ion-icon>
+              Messages
+            <% end %>
           </li>
           <li class="nav-item dropdown">
             <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
