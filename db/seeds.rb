@@ -14,9 +14,10 @@ Review.destroy_all
 Booking.destroy_all
 Friend.destroy_all
 User.destroy_all
-file = URI.open(Faker::LoremFlickr.image)
+
 puts "Creating a new user..."
-3.times do
+
+5.times do
   User.create!(first_name: Faker::Name.first_name,
   last_name: Faker::Name.last_name,
   email: Faker::Internet.email,
