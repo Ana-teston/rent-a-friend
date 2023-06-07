@@ -8,6 +8,8 @@
 <p><%= @friend.end_date %></p>
 <p><%= @friend.price%></p>
 <p><%= @friend.activity%></p>
+<%= cl_image_tag @friend.image, height: 300, width: 400, crop: :fill %>
+
 
 <hr>
 <p><%= @friend.user.first_name%> <%= @friend.user.last_name%></p>

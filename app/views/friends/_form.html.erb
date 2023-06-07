@@ -10,7 +10,7 @@
     <%= f.input :end_date, start_year: Time.now.year %>
     <%= f.input :activity %>
     <%= f.input :price %>
-    <%= f.input :image %>
+    <%= f.input :image, as: :file %>
     <%= f.button :submit, 'Create Friend', class: 'btn btn-primary mt-3' %>
   <% end %>
 </div>

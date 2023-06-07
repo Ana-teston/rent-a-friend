@@ -29,8 +29,13 @@ class FriendsController < ApplicationController
     authorize @friend
     redirect_to friend_path(@friend), notice:"updated"
   end
+
   def create
-    @friend = Friend.new(friends_param)
+
+    cloudinary_response = Cloudinary::Uploader.upload(params[:friend][:image])
+    image_key = cloudinary_response["public_id"]
+
+    @friend = Friend.new(friends_param.merge(image: image_key))
     @friend.user = current_user
 
     authorize @friend
