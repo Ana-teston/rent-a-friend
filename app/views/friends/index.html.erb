@@ -1,34 +1,33 @@
 <div class="container">
 
-  <h1>All Friends</h1>
-        <div class="row">
+<h1>All Friends</h1>
+  <div class="row">
+    <div class="col-12">
+      <div class="card-grid">
+      <% @friends.each do |friend| %>
 
-  <% @friends.each do |friend| %>
-            <div class="col-md-4">
+        <div class="card-sl">
+        <% if friend.image.attached? %>
 
-                <div class="card-sl">
+        <div class="card-image" style="background-image: url('<%= cl_image_path friend.image.key %>')">
+        </div>
+        <% end %>
 
-                    <div class="card-image">
-                        <img
-                            src="<%= friend.image %>" />
-                    </div>
+        <div class="card-heading">
+          <%= friend.first_name %> <%= friend.last_name %>
+        </div>
+        <div class="card-text">
+          <%= friend.bio %>
+        </div>
+        <div class="card-text">
+          <i class="fas fa-dollar-sign"></i> <%= friend.price %> <i class="fas fa-map-pin"></i> <%= friend.location %>
+        </div>
 
-                    <div class="card-heading">
-                        <%= friend.first_name %> <%= friend.last_name %>
-                    </div>
-                    <div class="card-text">
-                        <%= friend.bio %>
-                    </div>
-                    <div class="card-text">
-                        <i class="fas fa-dollar-sign"></i> <%= friend.price %> <i class="fas fa-map-pin"></i> <%= friend.location %>
-                    </div>
-
-                      <%= link_to "Click Here", friend_path(friend.id), class: "card-button" %>
-
-                </div>
-    </div>
-
-
-  <% end %>
+        <%= link_to "More info", friend_path(friend.id), class: "card-button text-decoration-none" %>
 
         </div>
+
+      <% end %>
+    </div>
+  </div>
+</div>

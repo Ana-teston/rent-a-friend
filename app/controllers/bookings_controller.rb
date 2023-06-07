@@ -11,8 +11,7 @@ class BookingsController < ApplicationController
     @booking.friend = @friend
     @booking.user = current_user
     @booking.activity = @friend.activity
-    @booking.num_of_days = (params[:booking]["end_date(3i)"].to_i - params[:booking]["start_date(3i)"].to_i)
-
+    @booking.num_of_days = (params[:booking]["end_date"][-2..-1].to_i - params[:booking]["start_date"][-2..-1].to_i)
     authorize @booking
 
     if @booking.save

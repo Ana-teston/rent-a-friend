@@ -5,7 +5,9 @@
               <div class="">
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-center text-center">
-                    <img src="<%= @friend.image %>" alt="<%= @friend.first_name%>" class="rounded-circle" height="150" width="150">
+                  <div class="round-max-images">
+                    <%= cl_image_tag @friend.image.key, width: 250 %>
+                  </div>
                     <div class="mt-3">
                       <h4><%= @friend.first_name%> <%= @friend.last_name%></h4>
                       <p class="text-secondary mb-1"><%= @friend.bio%></p>
@@ -29,7 +31,6 @@
                     <h6 class="mb-0">Activity</h6>
                     <span class="text-secondary"><%= @friend.activity%></span>
                   </li>
-
                 </ul>
               </div>
             </div>
@@ -52,6 +53,7 @@
     </div>
   <div class="row">
       <!-- customer reviews -->
+      <% unless @reviews.empty? %>
       <div class="col-lg-4 col-md-5 col-12 mb-4 mb-lg-0 pr-lg-6">
           <div class="mb-6">
             <h4 class="mb-3">Customer reviews</h4>
@@ -63,7 +65,7 @@
               <i class="far fa-star text-warning"></i>
               <% end %>
             </span>
-            <span class="h5"> <%=  @avg %> out of 5</span>
+            <span class="h5"> <%= @avg %> out of 5</span>
             <p class="font-14"><%= @reviews.count %> customer ratings</p>
             <div class="row align-items-center mb-1 ">
                 <div class="col-md-2 col-2 pr-0">
@@ -173,8 +175,12 @@
             <p>
               <%= review.body %>
             </p>
+            <% if policy(review).destroy? %>
+        <%= link_to "Delete", review_path(review), data: {turbo_method: :delete, turbo_confirm: "you sure?" }, method: :delete, class: "btn btn-danger text-white" %>
+      <% end %>
           </div>
           <% end %>
       </div>
+      <% end %>
   </div>
 </div>

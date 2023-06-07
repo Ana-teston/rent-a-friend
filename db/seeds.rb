@@ -7,13 +7,14 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 require "faker"
+require "open-uri"
 
 puts "Cleaning database..."
 Review.destroy_all
 Booking.destroy_all
 Friend.destroy_all
 User.destroy_all
-
+file = URI.open(Faker::LoremFlickr.image)
 puts "Creating a new user..."
 3.times do
   User.create!(first_name: Faker::Name.first_name,
@@ -27,7 +28,7 @@ puts "Created #{User.count} users"
 
 puts "Creating friends..."
 User.all.each do |user|
-    Friend.create!(first_name: Faker::Name.first_name,
+    friend = Friend.new(first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     age: Faker::Number.within(range: 18..65),
     bio: Faker::Lorem.paragraph(sentence_count: 2),
@@ -36,10 +37,12 @@ User.all.each do |user|
     price: Faker::Number.within(range: 10..100),
     start_date: Faker::Date.forward(days: 23),
     end_date: Faker::Date.forward(days: 30),
-    image: "https://source.unsplash.com/1600x900/?#{Faker::Lorem.word}",
     activity: Faker::Lorem.word,
     user: user)
-end
+    file = URI.open(Faker::LoremFlickr.image)
+    friend.image.attach(io: file, filename: "#{friend.first_name}.jpg", content_type: "image/jpg")
+    friend.save!
+  end
 
 puts "Created #{Friend.count} friends"
 
