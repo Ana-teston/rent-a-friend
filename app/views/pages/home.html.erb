@@ -2,8 +2,13 @@
 <div class="container h-100">
   <div class="row h-100 justify-content-center align-items-center text-center">
     <div>
-    <h1 class="display-1">Meet New People</h1>
+    <% if user_signed_in? %>
+      <h1 class="display-1">Hello <%= current_user.first_name %>👋</h1>
+      <%=link_to "View Friends", friends_path, class:"btn btn-primary"%></div>
+    <% else %>
+      <h1 class="display-1">Meet New People</h1>
       <%=link_to "Create an Account", new_user_registration_path, class:"btn btn-primary"%></div>
+    <% end %>
   </div>
 </div>
 

@@ -15,4 +15,12 @@ class Friend < ApplicationRecord
       errors.add(:end_date, "can not be before the start date")
     end
   end
+
+  def avg_rating
+    sum = 0
+    reviews.each do |review|
+      sum += review.rating
+    end
+    return sum/reviews.size
+  end
 end
