@@ -1,8 +1,12 @@
-<div class="container mt-5">
+<div class="container mt-5" data-controller="character-counter">
   <%= simple_form_for [@friend, @booking, @review] do |f| %>
-  <%= f.input :title %>
-  <%= f.input :body %>
-  <%= f.input :rating %>
-  <%= f.button :submit, 'Create Review', class: 'btn btn-primary mt-3' %>
-<% end %>
+    <%= f.input :title %>
+    <%= f.input :body, input_html: { "data-character-counter-target": "input" } %>
+      <p>
+        There are
+        <strong data-character-counter-target="counter"></strong> characters in this textarea.
+      </p>
+    <%= f.input :rating %>
+    <%= f.button :submit, 'Create Review', class: 'btn btn-primary mt-3' %>
+  <% end %>
 </div>
