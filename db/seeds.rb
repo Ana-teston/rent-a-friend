@@ -8,6 +8,7 @@
 
 require "faker"
 require "open-uri"
+require "geocoder"
 
 puts "Cleaning database..."
 Review.destroy_all
@@ -42,6 +43,13 @@ User.all.each do |user|
     user: user)
     file = URI.open(Faker::LoremFlickr.image)
     friend.image.attach(io: file, filename: "#{friend.first_name}.jpg", content_type: "image/jpg")
+
+    results = Geocoder.search(friend.location)
+      if results.present? && results.first.coordinates.present?
+        friend.latitude = results.first.coordinates[0]
+        friend.longitude = results.first.coordinates[1]
+      end
+
     friend.save!
   end
 
