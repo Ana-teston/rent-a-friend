@@ -51,7 +51,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_08_095553) do
     t.date "start_date"
     t.date "end_date"
     t.integer "num_of_days"
-    t.string "status"
+    t.string "status", default: "Pending"
     t.index ["friend_id"], name: "index_bookings_on_friend_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end

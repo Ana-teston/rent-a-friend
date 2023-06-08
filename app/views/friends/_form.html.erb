@@ -1,5 +1,5 @@
-<div class="container">
-<%= simple_form_for @friend, data: { controller: 'flatpickr' } do |f| %>
+<div class="container", data-controller = 'flatpickr'>
+<%= simple_form_for @friend do |f| %>
       <div class="row">
       <div class="col">
       <%= f.input :first_name %>
