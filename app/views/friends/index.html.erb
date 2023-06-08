@@ -1,36 +1,49 @@
-<div class="container">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
 
-<h1>All Friends</h1>
+<div class="wrapper">
+  <h1>All Friends</h1>
   <div class="row">
     <div class="col-12">
-      <div class="card-grid">
-      <% @friends.each do |friend| %>
-
-        <div class="card-sl">
-        <% if friend.image.attached? %>
-
-        <div class="card-image" style="background-image: url('<%= cl_image_path friend.image.key %>')">
-        </div>
+      <div class="card-grid flex justify-center">
+        <% @friends.each do |friend| %>
+          <div class="group relative p-4 border border-gray-200 rounded-lg shadow-md bg-azure-white m-4 card-item w-64">
+            <% if friend.image.attached? %>
+              <div class="rounded-lg overflow-hidden bg-gray-200 aspect-w-1 aspect-h-1 group-hover:opacity-75">
+                <%= image_tag friend.image.url, class: "w-full h-full object-center object-cover" %>
+              </div>
+            <% end %>
+            <div class="pt-10 pb-4 text-center">
+              <h3 class="text-sm font-medium text-rich-black">
+                <%= "#{friend.first_name} #{friend.last_name}" %>
+              </h3>
+              <div class="mt-3 flex flex-col items-center">
+                <p class="sr-only"></p>
+                <div class="flex items-center">
+                  <p class="mt-1 text-sm text-gray-500"> <%= friend.interests %></p>
+                </div>
+                <p class="mt-4 text-base font-medium text-rich-black"><i class="fas fa-dollar-sign"></i> <%= friend.price %></p>
+              </div>
+              <div class="mt-4">
+                <%= link_to "More info", friend_path(friend.id), class: "card-button text-decoration-none" %>
+              </div>
+            </div>
+          </div>
         <% end %>
-
-        <div class="card-heading">
-          <%= friend.first_name %> <%= friend.last_name %>
-        </div>
-        <div class="card-text">
-          <%= friend.bio %>
-        </div>
-        <div class="card-text">
-          <i class="fas fa-dollar-sign"></i> <%= friend.price %> <i class="fas fa-map-pin"></i> <%= friend.location %>
-        </div>
-
-        <%= link_to "More info", friend_path(friend.id), class: "card-button text-decoration-none" %>
-
-        </div>
-      <% end %>
+      </div>
+      <div style="width: 70vw; height: 400px;" data-controller="map" data-map-markers-value="<%= @markers.to_json %>" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
     </div>
-    <div style="width: 70vw; height: 400px;"
-          data-controller="map"
-          data-map-markers-value="<%= @markers.to_json %>"
-          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
   </div>
+
+
 </div>
+
+</body>
+</html>
