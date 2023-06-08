@@ -8,9 +8,16 @@ module.exports = {
     './app/views/**/*.{erb,haml,html,slim}'
   ],
   theme: {
+    colors: {
+      'azure-white': '#F2FDFF',
+      'rich-black': '#0F1020',
+      'light-purple': '#7353BA',
+      'dark-purple': '#6A0973',
+      'purple': '#6F2E97',
+    },
     extend: {
       fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        sans: ['Ubuntu', "sans-serif"],
       },
     },
   },
