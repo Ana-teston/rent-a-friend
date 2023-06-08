@@ -6,11 +6,6 @@
           <div class="lg:grid lg:grid-cols-2 lg:gap-8">
             <div class="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 sm:text-center lg:px-0 lg:text-left lg:flex lg:items-center">
               <div class="lg:py-24">
-              <div class="p-1">
-                  <% if user_signed_in? %>
-                    <div class="mb-4 p-1">
-                      <p class="text-lg">Hello <span class="font-bold"><%= current_user.first_name %>! 👋</span></p>
-              </div>
                 <p class="inline-flex p-1 text-md text-rich-black">Friendship. Connections. Memorable. Experiences.</p>
                 <h1 class="mt-2 mb-4 text-7xl font-extrabold text-rich-black">
                   <span class="block">Meet your perfect event</span>
@@ -19,12 +14,17 @@
                 <p class="text-base text-gray-300 text-lg mt-5">
                   Experience the joy of eventful gatherings, knowing that Rent-A-Friend has your back. Say goodbye to awkward solo moments and hello to engaging companionship that elevates every occasion.
                 </p>
+              <div class="p-1">
+                  <% if user_signed_in? %>
+                    <div class="mb-4 p-1">
+                      <p class="text-lg">Hello <span class="font-bold"><%= current_user.first_name %>! 👋</span></p>
+              </div>
                 <div class="mt-10 sm:mt-12">
                       <%= link_to "View Friends", friends_path, class: "px-6 py-3 text-azure-white bg-light-purple rounded-lg hover:bg-dark-purple transition-colors duration-300" %>
                     </div>
                   <% else %>
                     <div>
-                      <%= link_to "Create an Account", new_user_registration_path, class: "px-6 py-3 text-azure-white bg-light-purple rounded-lg hover:bg-dark-purple transition-colors duration-300" %>
+                      <%= link_to "Create an Account", new_user_registration_path, class: "mt-5 px-6 py-3 text-azure-white bg-light-purple rounded-lg hover:bg-dark-purple transition-colors duration-300" %>
                     </div>
                   <% end %>
                 </div>
