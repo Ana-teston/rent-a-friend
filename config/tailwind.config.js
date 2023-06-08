@@ -15,10 +15,8 @@ module.exports = {
       'dark-purple': '#6A0973',
       'purple': '#6F2E97',
     },
-    extend: {
-      fontFamily: {
+    fontFamily: {
         sans: ['Ubuntu', "sans-serif"],
-      },
     },
   },
   plugins: [
