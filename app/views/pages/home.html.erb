@@ -1,69 +1,136 @@
-<div class="banner">
-<div class="container h-100">
-  <div class="row h-100 justify-content-center align-items-center text-center">
-    <div>
-    <% if user_signed_in? %>
-      <h1 class="display-1">Hello <%= current_user.first_name %>👋</h1>
-      <%=link_to "View Friends", friends_path, class:"btn btn-primary"%></div>
-    <% else %>
-      <h1 class="display-1">Meet New People</h1>
-      <%=link_to "Create an Account", new_user_registration_path, class:"btn btn-primary"%></div>
-    <% end %>
-  </div>
-</div>
-
-</div>
-
-<div class="container my-5">
-  <div class="row d-flex justify-content-center">
-    <div class="col-md-10 col-xl-8 text-center">
-      <h3 class="mb-4">Testimonials</h3>
-    </div>
-  </div>
-
-  <div class="row text-center d-flex align-items-stretch">
-    <div class="col-md-4 mb-5 mb-md-0 d-flex align-items-stretch">
-      <div class="card testimonial-card">
-                <div class="card-body">
-          <h4 class="mb-4">Maria Smantha</h4>
-          <hr />
-          <p class="dark-grey-text mt-4">
-            <i class="fas fa-quote-left pe-2"></i>Lorem ipsum dolor sit amet eos adipisci,
-            consectetur adipisicing elit.
-          </p>
+<div class="bg-white">
+  <div class="relative overflow-hidden">
+    <main>
+      <div class="pt-10 bg-white sm:pt-16 lg:pt-8 lg:pb-14 lg:overflow-hidden">
+        <div class="mx-auto max-w-7xl lg:px-8">
+          <div class="lg:grid lg:grid-cols-2 lg:gap-8">
+            <div class="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 sm:text-center lg:px-0 lg:text-left lg:flex lg:items-center">
+              <div class="lg:py-24">
+                <p class="inline-flex p-1 text-md text-rich-black">Friendship. Connections. Memorable. Experiences.</p>
+                <h1 class="mt-2 mb-4 text-7xl font-extrabold text-rich-black">
+                  <span class="block">Meet your perfect event</span>
+                  <span class="pb-3 mb-2 text-light-purple">companion.</span>
+                </h1>
+                <p class="text-base text-gray-300 text-lg mt-5">
+                  Experience the joy of eventful gatherings, knowing that Rent-A-Friend has your back. Say goodbye to awkward solo moments and hello to engaging companionship that elevates every occasion.
+                </p>
+              <div class="p-1">
+                  <% if user_signed_in? %>
+                    <div class="mb-4 p-1">
+                      <p class="text-lg">Hello <span class="font-bold"><%= current_user.first_name %>! 👋</span></p>
+              </div>
+                <div class="mt-10 sm:mt-12">
+                      <%= link_to "View Friends", friends_path, class: "px-6 py-3 text-azure-white bg-light-purple rounded-lg hover:bg-dark-purple transition-colors duration-300" %>
+                    </div>
+                  <% else %>
+                    <div>
+                      <%= link_to "Create an Account", new_user_registration_path, class: "mt-5 px-6 py-3 text-azure-white bg-light-purple rounded-lg hover:bg-dark-purple transition-colors duration-300" %>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+            <div class="mt-12 -mb-16 sm:-mb-48 lg:m-0 lg:relative">
+              <div class="mx-auto max-w-md px-4 lg:max-w-none lg:px-0">
+                <img class="w-full h-auto lg:absolute lg:inset-0 lg:h-full lg:w-full object-contain lg:max-w-none" src="https://res.cloudinary.com/dhufhm6ar/image/upload/v1686218915/banner-image.png" alt="">
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-md-4 mb-5 mb-md-0 d-flex align-items-stretch">
-      <div class="card testimonial-card">
-        <div class="card-body">
-          <h4 class="mb-4">Lisa Cudrow</h4>
-          <hr />
-          <p class="dark-grey-text mt-4">
-            <i class="fas fa-quote-left pe-2"></i>Neque cupiditate assumenda in maiores
-            repudi mollitia architecto.
-          </p>
+
+      <!-- Testimonials section -->
+      <div class="relative bg-gray-50 pb-5">
+        <div class="relative">
+          <div class="text-center mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl">
+            <h2 class="text-base font-semibold tracking-wider uppercase">Make memories</h2>
+            <p class="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl text-light-purple">Testimonials</p>
+            <p class="mt-5 mx-auto max-w-prose text-lg text-gray-500">Our carefully selected friends offer more than just a plus-one; they bring genuine warmth, authenticity, and a willingness to create extraordinary moments by your side.</p>
+          </div>
+          <div class="mt-12 mx-auto max-w-md px-4 grid gap-8 sm:max-w-lg sm:px-6 lg:px-8 lg:grid-cols-3 lg:max-w-7xl">
+            <div class="flex flex-col rounded-lg shadow-lg overflow-hidden">
+              <div class="flex-1 bg-white p-6 flex flex-col justify-between">
+                <div class="flex-1">
+                  <p class="text-sm font-medium">
+                    Event Enthusiast
+                  </p>
+                  <div class="block mt-2">
+                    <p class="text-xl font-semibold text-dark-purple">A Lifesaver at Social Events!</p>
+                    <p class="mt-3 text-base text-gray-500">"Rent-A-Friend saved me from the dreaded solo moments at social events. Their platform connected me with an amazing companion who made every gathering a blast. No more awkward conversations or feeling out of place. Thanks to Rent-A-Friend, I've found a friend for life"</p>
+                  </div>
+                </div>
+                <div class="mt-6 flex items-center">
+                  <div class="flex-shrink-0">
+                      <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1616776005756-4dca36124bf9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80" alt="Sarah Thompson">
+                  </div>
+                  <div class="ml-3">
+                    <p class="text-sm font-medium text-gray-900">
+                      <a href="#" class="hover:underline">Sarah Thompson</a>
+                    </p>
+                    <div class="flex space-x-1 text-sm text-gray-500">
+                      <time datetime="2020-03-16"> June 8, 2023 </time>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-col rounded-lg shadow-lg overflow-hidden">
+              <div class="flex-1 bg-white p-6 flex flex-col justify-between">
+                <div class="flex-1">
+                  <p class="text-sm font-medium">
+                    Social Explorer
+                  </p>
+                  <div class="block mt-2">
+                    <p class="text-xl font-semibold text-dark-purple">Rediscovering the Joy of Socializing</p>
+                    <p class="mt-3 text-base text-gray-500">"As a newcomer in town, Rent-A-Friend became my go-to solution for making meaningful connections. I was able to browse through a diverse lineup of friends, finding someone who shared my interests. The experience was fantastic, and I now have a reliable friend to join me on all my social adventures."</p>
+                  </div>
+                </div>
+                <div class="mt-6 flex items-center">
+                  <div class="flex-shrink-0">
+                      <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1834&q=80" alt="John Doe">
+                  </div>
+                  <div class="ml-3">
+                    <p class="text-sm font-medium text-gray-900">
+                      <a href="#" class="hover:underline">John Doe</a>
+                    </p>
+                    <div class="flex space-x-1 text-sm text-gray-500">
+                      <time datetime="2020-03-16"> May 7, 2023 </time>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-col rounded-lg shadow-lg overflow-hidden">
+              <div class="flex-1 bg-white p-6 flex flex-col justify-between">
+                <div class="flex-1">
+                  <p class="text-sm font-medium">
+                    Friend-for-Hire
+                  </p>
+                  <div class="block mt-2">
+                    <p class="text-xl font-semibold text-dark-purple">Sharing Moments and Creating Bonds</p>
+                    <p class="mt-3 text-base text-gray-500">"Renting myself out as a friend through Rent-A-Friend has been a privilege. I've forged meaningful connections, offered support, and made every event special. It's incredibly fulfilling to touch lives and form friendships that enrich my own life in unexpected ways."</p>
+                  </div>
+                </div>
+                <div class="mt-6 flex items-center">
+                  <div class="flex-shrink-0">
+                      <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1542328991-cab8c5d90d08?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80" alt="Michael Fox">
+                  </div>
+                  <div class="ml-3">
+                    <p class="text-sm font-medium text-gray-900">
+                      <a href="#" class="hover:underline">Michael Fox</a>
+                    </p>
+                    <div class="flex space-x-1 text-sm text-gray-500">
+                      <time datetime="2020-03-16"> June 1, 2023 </time>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-md-4 mb-0 d-flex align-items-stretch">
-      <div class="card testimonial-card">
-        <div class="card-body">
-          <h4 class="mb-4">John Smith</h4>
-          <hr />
-          <p class="dark-grey-text mt-4">
-            <i class="fas fa-quote-left pe-2"></i>Delectus impedit saepe officiis ab
-            aliquam repellat rem unde ducimus.
-          </p>
-        </div>
-      </div>
-    </div>
+    </main>
   </div>
 </div>
-
-
-<div class="container text-center bg-dark-purple text-[name] border-[name] bg-[name]">Hello</div>
-<div class="container text-center bg-light-purple">Hello</div>
-<div class="container text-center bg-purple">Hello</div>
-<div class="container text-center bg-azure-white">Hello</div>
-<div class="container text-center bg-rich-black text-azure-white">Hello</div>
