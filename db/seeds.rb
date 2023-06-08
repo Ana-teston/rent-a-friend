@@ -16,9 +16,83 @@ Booking.destroy_all
 Friend.destroy_all
 User.destroy_all
 
+# give me a random array of interests
+
+interests = [
+  "🏀 Sports",
+  "🎸 Music",
+  "🍔 Food",
+  "🎨 Art",
+  "🏛 History",
+  "🌳 Nature",
+  "🎭 Culture",
+  "🍸 Nightlife",
+  "🛍 Shopping",
+  "🏛 Architecture",
+  "📸 Photography",
+  "🐶 Animals",
+   "🏛 Museums",
+   "🏖 Beaches",
+  "🥾 Hiking",
+   "🚴‍♀️ Cycling",
+   "🏛 Sightseeing",
+   "🧘‍♀️ Relaxing",
+   "💃 Dancing",
+   "👩‍🍳 Cooking"
+]
+# give me an array of random bio
+bios = [
+  "I am a very friendly person and I love meeting new people. I am very passionate about my city and I would love to show you around!",
+  "I am a student and I love to travel. I am very friendly and I love meeting new people. I am very passionate about my city and I would love to show you around!",
+  "I am a very nice person and I love meeting new people.",
+  "Hello! I am a very friendly person and I love meeting new people. I am very passionate about my city and I would love to show you around!",
+  "I am a very friendly person and I love meeting new people. I am very passionate about my city and I would love to show you around! I am a very friendly person and I love meeting new people. I am very passionate about my city and I would love to show you around!",
+]
+
+# give me an array of random people's face from the internet
+faces = [
+  "https://img.freepik.com/free-photo/pretty-smiling-joyfully-female-with-fair-hair-dressed-casually-looking-with-satisfaction_176420-15187.jpg",
+  "https://img.freepik.com/free-photo/portrait-man-laughing_23-2148859448.jpg",
+  "https://img.freepik.com/free-photo/emotions-people-concept-headshot-serious-looking-handsome-man-with-beard-looking-confident-determined_1258-26730.jpg",
+  "https://img.freepik.com/free-photo/handsome-young-man-with-new-stylish-haircut_176420-19636.jpg",
+  "https://img.freepik.com/free-photo/portrait-expressive-young-woman_1258-48167.jpg",
+  "https://img.freepik.com/free-photo/happy-bearded-man-business-clothes-looking-camera_171337-11392.jpg",
+  "https://img.freepik.com/free-photo/close-up-stylish-attractive-girl-with-hairbun-smiling-looking-hopeful_176420-25550.jpg",
+  "https://img.freepik.com/free-photo/human-face-expressions-emotions-positive-joyful-young-beautiful-female-with-fair-straight-hair-casual-clothing_176420-15188.jpg",
+  "https://img.freepik.com/free-photo/portrait-young-pretty-cheerful-girl-smiling_176420-9553.jpg",
+  "https://img.freepik.com/free-photo/young-beautiful-woman-pink-warm-sweater-natural-look-smiling-portrait-isolated-long-hair_285396-896.jpg",
+]
+
+# give me a random array of activities with an icon inside the name
+
+activities = [
+ "🏀 Sports",
+ "🎸 Music",
+ "🍔 Food",
+ "🎨 Art",
+ "🏛 History",
+ "🌳 Nature",
+ "🎭 Culture",
+ "🍸 Nightlife",
+ "🛍 Shopping",
+ "🏛 Architecture",
+ "📸 Photography",
+ "🐶 Animals",
+  "🏛 Museums",
+  "🏖 Beaches",
+ "🥾 Hiking",
+  "🚴‍♀️ Cycling",
+  "🏛 Sightseeing",
+  "🧘‍♀️ Relaxing",
+  "💃 Dancing",
+  "👩‍🍳 Cooking"
+
+]
+
+
 puts "Creating a new user..."
 
-5.times do
+10.times do
   User.create!(first_name: Faker::Name.first_name,
   last_name: Faker::Name.last_name,
   email: Faker::Internet.email,
@@ -33,15 +107,15 @@ User.all.each do |user|
     friend = Friend.new(first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     age: Faker::Number.within(range: 19..65),
-    bio: Faker::Lorem.paragraph(sentence_count: 2),
+    bio: bios[rand(0..4)],
     location: Faker::Address.city,
-    interests: Faker::Lorem.paragraph(sentence_count: 2),
-    price: Faker::Number.within(range: 10..100),
+    interests: interests[rand(0..19)],
+    price: Faker::Number.within(range: 10..50),
     start_date: Faker::Date.forward(days: 23),
     end_date: Faker::Date.forward(days: 30),
-    activity: Faker::Lorem.word,
+    activity: activities[rand(0..19)],
     user: user)
-    file = URI.open(Faker::LoremFlickr.image)
+    file = URI.open(faces.delete(faces.sample))
     friend.image.attach(io: file, filename: "#{friend.first_name}.jpg", content_type: "image/jpg")
     results = Geocoder.search(friend.location)
       if results.present? && results.first.coordinates.present?
@@ -72,17 +146,21 @@ puts "Created #{Booking.count} bookings"
 
 puts "Creating reviews..."
 
-User.all.each do |user|
-  Friend.all.each do |friend|
-    Booking.all.each do |booking|
-      Review.create!(title: Faker::Lorem.sentence(word_count: 3),
-      body: Faker::Lorem.paragraph(sentence_count: 2),
-      rating: Faker::Number.within(range: 1..5),
-      user: user,
-      friend: friend,
-      booking: booking)
-    end
-  end
+# we need to create 1 review per user per friend per booking
+
+booking = Booking.all
+user = User.all
+friend = Friend.all
+
+10.times do
+Review.create!(
+  title: Faker::Lorem.sentence(word_count: 3),
+  body: Faker::Lorem.paragraph(sentence_count: 5),
+  rating: rand(1..5),
+  user: user[rand(0..9)],
+  friend: friend[rand(0..9)],
+  booking: booking[rand(0..9)]
+)
 end
 
 puts "Created #{Review.count} reviews"
