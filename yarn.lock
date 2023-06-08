@@ -712,6 +712,11 @@ source-map@^0.6.0:
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
   integrity sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
 
+stimulus-character-counter@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/stimulus-character-counter/-/stimulus-character-counter-4.2.0.tgz#6e7782c2c525ccc661ffbb39a7b15085a3a42a21"
+  integrity sha512-5ZN5wFlOnIkZRSiwtC7zb880yvE4O/4+KOhdg0z6zQet4iLA2+W0NJvHX5teW6tl5M1IGzHrgOtuEsUVfQ2TrA==
+
 stimulus-dropdown@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/stimulus-dropdown/-/stimulus-dropdown-2.1.0.tgz#22f15cd1dc247e08f04c3f95d7ab9d8102602a07"
