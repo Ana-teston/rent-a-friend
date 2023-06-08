@@ -41,14 +41,12 @@ class BookingsController < ApplicationController
     authorize @booking
 
     redirect_to bookings_path, notice: "Booking successfully deleted"
-
   end
 
   private
 
 
-
   def bookings_param
-    params.require(:booking).permit(:activity, :start_date, :end_date, :num_of_days)
+    params.require(:booking).permit(:activity, :start_date, :end_date, :num_of_days, :status)
   end
 end
