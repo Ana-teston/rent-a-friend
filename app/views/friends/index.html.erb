@@ -7,14 +7,12 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-
-<div class="wrapper">
-  <h1>All Friends</h1>
-  <div class="row">
-    <div class="col-12">
-      <div class="card-grid flex justify-center">
+  <div class="container mx-auto">
+    <h1 class="text-center mt-2 mb-4 text-7xl font-extrabold text-rich-black">All Your <span class="text-light-purple">Friends</span> 🫶</h1>
+    <div class="flex justify-center">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         <% @friends.each do |friend| %>
-          <div class="group relative p-4 border border-gray-200 rounded-lg shadow-md bg-azure-white m-4 card-item w-64">
+          <div class="group relative p-4 border border-gray-200 rounded-lg shadow-md bg-white-grey w-64">
             <% if friend.image.attached? %>
               <div class="rounded-lg overflow-hidden bg-gray-200 aspect-w-1 aspect-h-1 group-hover:opacity-75">
                 <%= image_tag friend.image.url, class: "w-full h-full object-center object-cover" %>
@@ -32,18 +30,14 @@
                 <p class="mt-4 text-base font-medium text-rich-black"><i class="fas fa-dollar-sign"></i> <%= friend.price %></p>
               </div>
               <div class="mt-4">
-                <%= link_to "More info", friend_path(friend.id), class: "card-button text-decoration-none" %>
+                <%= link_to "More info", friend_path(friend.id), class: "card-button text-decoration-none rounded-md bg-indigo-600" %>
               </div>
             </div>
           </div>
         <% end %>
       </div>
-      <div style="width: 70vw; height: 400px;" data-controller="map" data-map-markers-value="<%= @markers.to_json %>" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
     </div>
+    <div style="width: 70vw; height: 400px;" data-controller="map" data-map-markers-value="<%= @markers.to_json %>" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
   </div>
-
-
-</div>
-
 </body>
 </html>
