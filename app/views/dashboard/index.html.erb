@@ -188,10 +188,9 @@
 
                   <div class="mt-6 sm:flex sm:justify-between">
                     <div class="flex items-center">
-                      <%= simple_form_for [booking.friend, booking], data: { controller: 'autosave' } do |f| %>
+                      <%= simple_form_for [booking.friend, booking], data: { controller: 'autosave', autosave_delay_value: '1000'} do |f| %>
 
-                        <%= f.input :status, collection: Booking::STATUS, selected: booking.status || Booking::STATUS.first, data: { action: 'click->autosave#save' } %>
-                        <%= f.submit class: "py-2 px-6 bg-dark-purple text-azure-white rounded" %>
+                        <%= f.input :status, collection: Booking::STATUS, selected: booking.status || Booking::STATUS.first, input_html: { data: { action: 'change->autosave#save' } } %>
 
                       <% end %>
                       </div>
@@ -201,8 +200,6 @@
                       <%= link_to "View profile", friend_path(@friend), class: "text-indigo-600 whitespace-nowrap hover:text-indigo-500" %>
                       </div>
                     <%# %>
-
-
 
                     </div>
                   </div>
