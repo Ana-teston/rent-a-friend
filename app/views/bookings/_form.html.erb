@@ -7,6 +7,8 @@
   <div class="col">
   <%= f.input :end_date, as: :string, input_html: { data: { flatpickr_target: "endTime" } } %>
   </div>
+  <div class="col">
+   <%= f.input :status, collection: Booking::STATUS, selected: @booking.status || Booking::STATUS.first %>
   </div>
   <%= f.button :submit, class:"btn btn-primary" %>
 <% end %>
