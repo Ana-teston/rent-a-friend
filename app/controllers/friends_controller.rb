@@ -2,6 +2,12 @@ class FriendsController < ApplicationController
   before_action :authenticate_user!
   def index
     @friends = policy_scope(Friend)
+    @markers = @friends.geocoded.map do |friend|
+      {
+        lat: friend.latitude,
+        lng: friend.longitude
+      }
+    end
   end
 
   def show
