@@ -13,3 +13,9 @@ application.register("hello", HelloController)
 
 import Autosave from 'stimulus-rails-autosave'
 application.register('autosave', Autosave)
+
+import Dropdown from 'stimulus-dropdown';
+application.register('dropdown', Dropdown);
+import MapController from "./map_controller"
+application.register("map", MapController)
+
