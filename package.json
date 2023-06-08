@@ -10,6 +10,7 @@
     "stimulus": "^3.2.1",
     "stimulus-character-counter": "^4.2.0",
     "stimulus-dropdown": "^2.1.0",
+    "stimulus-notification": "^2.2.0",
     "stimulus-rails-autosave": "^4.1.1",
     "stimulus-use": "^0.52.0",
     "webpack": "^5.85.0",

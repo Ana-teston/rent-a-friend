@@ -10,13 +10,17 @@ class BookingsController < ApplicationController
     @booking.friend = @friend
     @booking.user = current_user
     @booking.activity = @friend.activity
-    @booking.num_of_days = (params[:booking]["end_date"][-2..-1].to_i - params[:booking]["start_date"][-2..-1].to_i)
+    @booking.num_of_days = (Date.parse(params[:booking]["end_date"]) - Date.parse(params[:booking]["start_date"])).to_i
     authorize @booking
 
-    if @booking.save
-      redirect_to dashboard_path, notice: "Booking successfully created"
+    if @booking.num_of_days > 0 && @booking.save
+      redirect_to dashboard_index_path, notice: "Booking successfully created"
     else
-      redirect_to friend_path(@friend), status: :unprocessable_entity
+      if @booking.num_of_days <= 0
+        redirect_to friend_path(@friend), notice: "You can't choose a date in the past"
+      else
+        redirect_to friend_path(@friend), status: :unprocessable_entity
+      end
     end
   end
 
@@ -31,7 +35,7 @@ class BookingsController < ApplicationController
     @booking.update(bookings_param)
     authorize @booking
 
-    redirect_to dashboard_path, notice: "Booking successfully updated"
+    redirect_to dashboard_index_path, notice: "Booking successfully updated"
   end
 
   def destroy
@@ -39,7 +43,7 @@ class BookingsController < ApplicationController
     @booking.destroy
     authorize @booking
 
-    redirect_to dashboard_path, notice: "Booking successfully deleted"
+    redirect_to dashboard_index_path, notice: "Booking successfully deleted"
   end
 
   private
