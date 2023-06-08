@@ -18,4 +18,8 @@ import Dropdown from 'stimulus-dropdown';
 application.register('dropdown', Dropdown);
 import MapController from "./map_controller"
 application.register("map", MapController)
+import Notification from 'stimulus-notification'
+application.register('notification', Notification)
 
+import CharacterCounter from 'stimulus-character-counter'
+application.register('character-counter', CharacterCounter)
