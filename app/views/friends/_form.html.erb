@@ -1,28 +1,28 @@
-<div class="container", data-controller = 'flatpickr'>
-<%= simple_form_for @friend do |f| %>
-      <div class="row">
-      <div class="col">
-      <%= f.input :first_name %>
+<div class="container mx-5 py-3 mx-auto flex min-h-full justify-center px-6 py-12 lg:px-8" data-controller="flatpickr">
+  <%= simple_form_for @friend do |f| %>
+    <div class="row mt-10 sm:mx-auto sm:w-full sm:max-w-sm rounded-md">
+      <div class="col mt-10 sm:mx-auto sm:w-full sm:max-w-sm rounded-md">
+        <%= f.input :first_name, class: "rounded-md border-2 py-2 px-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent" %>
       </div>
-      <div class="col">
-    <%= f.input :last_name %>
-    </div>
-    </div>
-    <%= f.input :age %>
-    <%= f.input :location %>
-    <%= f.input :bio %>
-    <%= f.input :interests %>
-    <div class="row">
-      <div class="col">
-        <%= f.input :start_date, as: :string, input_html: { data: { flatpickr_target: "startTime" } } %>
-      </div>
-      <div class="col">
-        <%= f.input :end_date, as: :string, input_html: { data: { flatpickr_target: "endTime" } } %>
+      <div class="col mt-10 sm:mx-auto sm:w-full sm:max-w-sm rounded-md">
+        <%= f.input :last_name, class: "rounded-md border-2 py-2 px-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent" %>
       </div>
     </div>
-    <%= f.input :activity %>
-    <%= f.input :price %>
-    <%= f.input :image, as: :file %>
-    <%= f.button :submit, 'Create Friend', class: 'btn btn-primary mt-3' %>
+    <%= f.input :age, class: "rounded-md border-2 py-2 px-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent" %>
+    <%= f.input :location, class: "rounded-md border-2 py-2 px-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent" %>
+    <%= f.input :bio, class: "rounded-md border-2 py-2 px-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent" %>
+    <%= f.input :interests, class: "rounded-md border-2 py-2 px-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent" %>
+    <div class="row mt-10 sm:mx-auto sm:w-full sm:max-w-sm rounded-md">
+      <div class="col mt-10 sm:mx-auto sm:w-full sm:max-w-sm rounded-md">
+        <%= f.input :start_date, as: :string, input_html: { class: "rounded-md border-2 py-2 px-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent", data: { flatpickr_target: "startTime" } } %>
+      </div>
+      <div class="col mt-10 sm:mx-auto sm:w-full sm:max-w-sm rounded-md">
+        <%= f.input :end_date, as: :string, input_html: { class: "rounded-md border-2 py-2 px-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent", data: { flatpickr_target: "endTime" } } %>
+      </div>
+    </div>
+    <%= f.input :activity, class: "rounded-md border-2 py-2 px-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent" %>
+    <%= f.input :price, class: "rounded-md border-2 py-2 px-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent" %>
+    <%= f.input :image, as: :file, input_html: { class: "rounded-md border-2 py-2 px-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent custom-file-input" } %>
+    <%= f.button :submit, 'Create Friend', class: 'btn btn-primary mt-3 bg-light-purple text-azure-white rounded-md justify-center' %>
   <% end %>
 </div>
