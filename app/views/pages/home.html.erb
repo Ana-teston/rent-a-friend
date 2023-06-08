@@ -16,15 +16,15 @@
                 </p>
               <div class="p-1">
                   <% if user_signed_in? %>
-                    <div class="mb-4 p-1">
+                    <div class="mt-5">
                       <p class="text-lg">Hello <span class="font-bold"><%= current_user.first_name %>! 👋</span></p>
               </div>
-                <div class="mt-10 sm:mt-12">
+                <div class="mt-5">
                       <%= link_to "View Friends", friends_path, class: "px-6 py-3 text-azure-white bg-light-purple rounded-lg hover:bg-dark-purple transition-colors duration-300" %>
                     </div>
                   <% else %>
-                    <div>
-                      <%= link_to "Create an Account", new_user_registration_path, class: "mt-5 px-6 py-3 text-azure-white bg-light-purple rounded-lg hover:bg-dark-purple transition-colors duration-300" %>
+                    <div class="mt-10 sm:mt-12">
+                      <%= link_to "Create an Account", new_user_registration_path, class: "mt-10 px-6 py-3 text-azure-white bg-light-purple rounded-lg hover:bg-dark-purple transition-colors duration-300" %>
                     </div>
                   <% end %>
                 </div>
