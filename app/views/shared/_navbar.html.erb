@@ -1,5 +1,5 @@
-<nav class="bg-azure-white">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<nav class="fixed top-0 z-50 bg-light-purple shadow-lg w-full">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
     <div class="flex justify-between h-16">
       <div class="flex">
         <div class="-ml-2 mr-2 flex items-center md:hidden">
@@ -16,12 +16,16 @@
           </button>
         </div>
         <div class="flex-shrink-0 flex items-center">
-          <img class="block lg:hidden h-8 w-auto" src="https://res.cloudinary.com/dhufhm6ar/image/upload/v1686228187/logo_lgyxoi.png" alt="RentAFriend">
-          <img class="hidden lg:block h-8 w-auto" src="https://res.cloudinary.com/dhufhm6ar/image/upload/v1686228187/logo_lgyxoi.png" alt="RentAFriend">
+          <a href="/" class="text-azure-white">
+          RentAFriend
+            <%# <img class="block lg:hidden h-8 w-auto" src="https://res.cloudinary.com/dhufhm6ar/image/upload/v1686228187/logo_lgyxoi.png" alt="RentAFriend">
+            <img class="hidden lg:block h-8 w-auto" src="https://res.cloudinary.com/dhufhm6ar/image/upload/v1686228187/logo_lgyxoi.png" alt="RentAFriend"> %>
+          </a>
         </div>
+
         <div class="hidden md:ml-6 md:flex md:space-x-8 items-center">
-          <%= link_to "Friends", friends_path, class: "text-rich-black hover:text-light-purple px-3 py-2 rounded-md text-sm font-medium" %>
-          <a href="#" class="text-rich-black hover:text-light-purple px-3 py-2 rounded-md text-sm font-medium">Message</a>
+          <%= link_to "Friends", friends_path, class: "text-azure-white hover:underline hover:underline-2 hover:underline-offset-1 px-3 py-2 rounded-md text-sm font-medium" %>
+          <a href="#" class="text-azure-white hover:underline hover:underline-2 hover:underline-offset-1 px-3 py-2 rounded-md text-sm font-medium">Message</a>
         </div>
       </div>
       <div class="flex items-center">
@@ -29,7 +33,7 @@
         <% if current_user.friend.nil? %>
         <div class="flex-shrink-0">
         <%= link_to new_friend_path do %>
-          <button type="button" class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ">
+          <button type="button" class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-azure-white bg-indigo-600 shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ">
             <!-- Heroicon name: solid/plus-sm -->
             <svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
               <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
@@ -42,7 +46,7 @@
         <%# if user signed in %>
         <div class="hidden md:ml-4 md:flex-shrink-0 md:flex md:items-center">
 
-          <button type="button" class="bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          <button type="button" class="bg-azure-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
             <span class="sr-only">View notifications</span>
             <!-- Heroicon name: outline/bell -->
             <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -53,7 +57,7 @@
           <!-- Profile dropdown -->
           <div class="ml-3 relative" data-controller="dropdown">
             <div>
-              <button type="button" class="bg-white rounded-full flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" id="user-menu-button" aria-expanded="false" aria-haspopup="true" data-action="dropdown#toggle click@window->dropdown#hide" >
+              <button type="button" class="rounded-full flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" id="user-menu-button" aria-expanded="false" aria-haspopup="true" data-action="dropdown#toggle click@window->dropdown#hide" >
 
                 <span class="sr-only">Open user menu</span>
                 <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
@@ -69,7 +73,7 @@
           </div>
         </div>
         <% else %>
-            <%= link_to "Sign in", new_user_session_path, class: "relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ml-5" %>
+            <%= link_to "Sign in", new_user_session_path, class: "relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-azure-white bg-indigo-600 shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ml-5" %>
         <% end %>
       </div>
     </div>
@@ -77,5 +81,3 @@
 
 
 </nav>
-
-
