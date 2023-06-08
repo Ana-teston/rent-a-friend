@@ -10,5 +10,9 @@ application.register("flatpickr", FlatpickrController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+
+import Dropdown from 'stimulus-dropdown';
+application.register('dropdown', Dropdown);
 import MapController from "./map_controller"
 application.register("map", MapController)
+
