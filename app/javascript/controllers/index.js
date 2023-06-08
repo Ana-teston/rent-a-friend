@@ -4,12 +4,15 @@
 
 import { application } from "./application"
 
+
 import FlatpickrController from "./flatpickr_controller"
 application.register("flatpickr", FlatpickrController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import Autosave from 'stimulus-rails-autosave'
+application.register('autosave', Autosave)
 
 import Dropdown from 'stimulus-dropdown';
 application.register('dropdown', Dropdown);

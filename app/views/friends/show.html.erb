@@ -35,15 +35,6 @@
               </div>
             </div>
             <div class="col mb-3">
-              <h5>Bookings Lists :</h5>
-              <ul>
-                <% @friend.bookings.each do |booking| %>
-                  <li>
-                    From <%= booking.start_date %> to <%= booking.end_date %>. Status: <%= booking.status %>
-                  </li>
-                <% end %>
-              </ul>
-
               <%= render partial: "bookings/form", locals: { booking: @booking } %>
             </div>
           </div>
