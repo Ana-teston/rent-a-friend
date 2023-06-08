@@ -11,5 +11,6 @@ Rails.application.routes.draw do
     end
   end
   resources :reviews, only: [:destroy]
-  resources :bookings, only: [:index, :destroy]
+  resources :bookings, only: [:destroy]
+  resources :dashboard, only: [:index]
 end

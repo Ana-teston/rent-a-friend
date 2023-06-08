@@ -1,7 +1,6 @@
 class BookingsController < ApplicationController
   before_action :authenticate_user!
   def index
-
     @bookings = policy_scope(Booking)
   end
 
@@ -15,7 +14,7 @@ class BookingsController < ApplicationController
     authorize @booking
 
     if @booking.save
-      redirect_to bookings_path, notice: "Booking successfully created"
+      redirect_to dashboard_path, notice: "Booking successfully created"
     else
       redirect_to friend_path(@friend), status: :unprocessable_entity
     end
@@ -32,7 +31,7 @@ class BookingsController < ApplicationController
     @booking.update(bookings_param)
     authorize @booking
 
-    redirect_to bookings_path, notice: "Booking successfully updated"
+    redirect_to dashboard_path, notice: "Booking successfully updated"
   end
 
   def destroy
@@ -40,15 +39,13 @@ class BookingsController < ApplicationController
     @booking.destroy
     authorize @booking
 
-    redirect_to bookings_path, notice: "Booking successfully deleted"
-
+    redirect_to dashboard_path, notice: "Booking successfully deleted"
   end
 
   private
 
 
-
   def bookings_param
-    params.require(:booking).permit(:activity, :start_date, :end_date, :num_of_days)
+    params.require(:booking).permit(:activity, :start_date, :end_date, :num_of_days, :status)
   end
 end

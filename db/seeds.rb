@@ -8,6 +8,7 @@
 
 require "faker"
 require "open-uri"
+require "geocoder"
 
 puts "Cleaning database..."
 Review.destroy_all
@@ -22,7 +23,7 @@ puts "Creating a new user..."
   last_name: Faker::Name.last_name,
   email: Faker::Internet.email,
   password: "123456",
-  birth_date: Faker::Date.birthday(min_age: 18, max_age: 65))
+  birth_date: Faker::Date.birthday(min_age: 19, max_age: 65))
 end
 
 puts "Created #{User.count} users"
@@ -31,7 +32,7 @@ puts "Creating friends..."
 User.all.each do |user|
     friend = Friend.new(first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    age: Faker::Number.within(range: 18..65),
+    age: Faker::Number.within(range: 19..65),
     bio: Faker::Lorem.paragraph(sentence_count: 2),
     location: Faker::Address.city,
     interests: Faker::Lorem.paragraph(sentence_count: 2),
@@ -42,6 +43,13 @@ User.all.each do |user|
     user: user)
     file = URI.open(Faker::LoremFlickr.image)
     friend.image.attach(io: file, filename: "#{friend.first_name}.jpg", content_type: "image/jpg")
+
+    results = Geocoder.search(friend.location)
+      if results.present? && results.first.coordinates.present?
+        friend.latitude = results.first.coordinates[0]
+        friend.longitude = results.first.coordinates[1]
+      end
+
     friend.save!
   end
 
@@ -56,7 +64,8 @@ User.all.each do |user|
     end_date: friend.end_date,
     num_of_days: (friend.end_date - friend.start_date).to_i,
     user: user,
-    friend: friend)
+    friend: friend,
+    status: Booking::STATUS.sample)
   end
 end
 

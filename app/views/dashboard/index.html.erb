@@ -1,0 +1,227 @@
+<% if @bookings.any? %>
+  <div class="bg-white">
+    <div class="py-16 sm:py-24">
+      <div class="max-w-7xl mx-auto sm:px-2 lg:px-8">
+        <div class="max-w-2xl mx-auto px-4 lg:max-w-4xl lg:px-0">
+          <h1 class="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">Bookings history</h1>
+          <p class="mt-2 text-sm text-gray-500">Check the status of recent bookings, manage returns, and discover similar products.</p>
+        </div>
+      </div>
+
+      <div class="mt-16">
+        <h2 class="sr-only">Recent bookings</h2>
+        <div class="max-w-7xl mx-auto sm:px-2 lg:px-8">
+          <div class="max-w-2xl mx-auto space-y-8 sm:px-4 lg:max-w-4xl lg:px-0">
+                  <% @bookings.each do |booking| %>
+            <div class="bg-white border-t border-b border-gray-200 shadow-sm sm:rounded-lg sm:border">
+
+                <div class="flex items-center p-4 border-b border-gray-200 sm:p-6 sm:grid sm:grid-cols-4 sm:gap-x-6">
+                <dl class="flex-1 grid grid-cols-5 gap-x-6 text-sm sm:col-span-5 sm:grid-cols-5 lg:col-span-5">
+
+                  <div class="hidden sm:block">
+                    <dt class="font-medium text-gray-900">Date placed</dt>
+                    <dd class="mt-1 text-gray-500">
+                    <%= booking.created_at.strftime(" %d %b %Y") %>
+                    </dd>
+                  </div>
+                  <div>
+                    <dt class="font-medium text-gray-900">Total amount</dt>
+                    <dd class="mt-1 font-medium text-gray-900">$<%= booking.friend.price * booking.num_of_days %></dd>
+
+                  </div>
+                  <div>
+                    <dt class="font-medium text-gray-900">Total days</dt>
+                    <dd class="mt-1 font-medium text-gray-900"><%= booking.num_of_days %></dd>
+
+                  </div>
+                  <div>
+                    <dt class="font-medium text-gray-900">From:</dt>
+                    <dd class="mt-1 font-medium text-gray-900"><%= booking.start_date.strftime(" %d %b %Y") %></dd>
+
+                  </div>
+                  <div>
+                    <dt class="font-medium text-gray-900">To:</dt>
+                    <dd class="mt-1 font-medium text-gray-900"><%= booking.end_date.strftime(" %d %b %Y") %></dd>
+
+                  </div>
+                </dl>
+
+
+
+
+              </div>
+
+              <!-- Products -->
+              <ul role="list" class="divide-y divide-gray-200">
+                <li class="p-4 sm:p-6">
+                  <div class="flex items-center sm:items-start">
+                    <div class="flex-shrink-0 w-20 h-20 bg-gray-200 rounded-lg overflow-hidden sm:w-40 sm:h-40">
+                      <%= cl_image_tag booking.friend.image.key, class: "w-full h-full object-center object-cover" %>
+
+                    </div>
+                    <div class="flex-1 ml-6 text-sm">
+                      <div class="font-medium text-gray-900 sm:flex sm:justify-between">
+                        <h5><%= booking.friend.first_name %> <%= booking.friend.last_name %></h5>
+                        <p class="mt-2 sm:mt-0">$<%= booking.friend.price %>/ day</p>
+                      </div>
+                      <p class="hidden text-gray-500 sm:block sm:mt-2"><%= booking.friend.bio %></p>
+                    </div>
+                  </div>
+
+                  <div class="mt-6 sm:flex sm:justify-between">
+                    <div class="flex items-center">
+                      <!-- Heroicon name: solid/check-circle -->
+                      <svg class="w-5 h-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                      </svg>
+                      <p class="ml-2 text-sm font-medium text-gray-500"><%= booking.status %></p>
+                    </div>
+
+                    <div class="mt-6 border-t border-gray-200 pt-4 flex items-center space-x-4 divide-x divide-gray-200 text-sm font-medium sm:mt-0 sm:ml-4 sm:border-none sm:pt-0">
+                      <div class="flex-1 flex justify-center">
+                      <%= link_to "View profile", friend_path(booking.friend), class: "text-indigo-600 whitespace-nowrap hover:text-indigo-500" %>
+                      </div>
+                    <% if policy(booking).edit? %>
+                        <div class="flex-1 pl-4 flex justify-center">
+                            <%= link_to "Edit booking", edit_friend_booking_path(booking.friend, booking), class: "text-indigo-600 whitespace-nowrap hover:text-indigo-500" %>
+                        </div>
+                      <% end %>
+                      <% if policy(booking).destroy? %>
+                      <div class="flex-1 pl-4 flex justify-center">
+                        <%= link_to "Delete the booking", booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "you sure?"}, method: :delete, class: "text-indigo-600 whitespace-nowrap hover:text-indigo-500" %>
+                      </div>
+                      <% end %>
+                      <div class="flex-1 pl-4 flex justify-center">
+                        <%= link_to "Add a review", new_friend_booking_review_path(booking.friend, booking), class:"text-indigo-600 whitespace-nowrap hover:text-indigo-500" %>
+                      </div>
+
+                    </div>
+                  </div>
+                </li>
+
+                <!-- More products... -->
+              </ul>
+            </div>
+            <% end %>
+
+          </div>
+
+            <!-- More bookings... -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <% else %>
+  <div class="max-w-7xl mx-auto py-16 sm:py-24">
+      <div class="max-w-2xl mx-auto px-4 lg:max-w-4xl lg:px-0">
+        <h1 class="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">Sorry no bookings found</h1>
+      </div>
+    </div>
+<% end %>
+
+<% unless @friend.nil? %>
+  <div class="bg-white">
+    <div class="py-16 sm:py-24">
+      <div class="max-w-7xl mx-auto sm:px-2 lg:px-8">
+        <div class="max-w-2xl mx-auto px-4 lg:max-w-4xl lg:px-0">
+          <h1 class="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">Profile bookings</h1>
+          <p class="mt-2 text-sm text-gray-500">Check the status of recent profiles, manage returns, and discover similar products.</p>
+        </div>
+      </div>
+
+      <div class="mt-16">
+        <h2 class="sr-only">Profile bookings</h2>
+        <div class="max-w-7xl mx-auto sm:px-2 lg:px-8">
+          <div class="max-w-2xl mx-auto space-y-8 sm:px-4 lg:max-w-4xl lg:px-0">
+          <% @friend.bookings.each do |booking| %>
+            <div class="bg-white border-t border-b border-gray-200 shadow-sm sm:rounded-lg sm:border">
+
+              <div class="flex items-center p-4 border-b border-gray-200 sm:p-6 sm:grid sm:grid-cols-4 sm:gap-x-6">
+                <dl class="flex-1 grid grid-cols-5 gap-x-6 text-sm sm:col-span-5 sm:grid-cols-5 lg:col-span-5">
+
+                  <div class="hidden sm:block">
+                    <dt class="font-medium text-gray-900">Date placed</dt>
+                    <dd class="mt-1 text-gray-500">
+                    <%= booking.created_at.strftime(" %d %b %Y") %>
+                    </dd>
+                  </div>
+                  <div>
+                    <dt class="font-medium text-gray-900">Total amount</dt>
+                    <dd class="mt-1 font-medium text-gray-900">$<%= booking.friend.price * booking.num_of_days %></dd>
+
+                  </div>
+                  <div>
+                    <dt class="font-medium text-gray-900">Total days</dt>
+                    <dd class="mt-1 font-medium text-gray-900"><%= booking.num_of_days %></dd>
+
+                  </div>
+                  <div>
+                    <dt class="font-medium text-gray-900">From:</dt>
+                    <dd class="mt-1 font-medium text-gray-900"><%= booking.start_date.strftime(" %d %b %Y") %></dd>
+
+                  </div>
+                  <div>
+                    <dt class="font-medium text-gray-900">To:</dt>
+                    <dd class="mt-1 font-medium text-gray-900"><%= booking.end_date.strftime(" %d %b %Y") %></dd>
+
+                  </div>
+                </dl>
+
+
+
+
+              </div>
+
+              <!-- Products -->
+              <ul role="list" class="divide-y divide-gray-200">
+                <li class="p-4 sm:p-6">
+                  <div class="flex items-center sm:items-start">
+
+                    <div class="flex-1 text-sm">
+                      <div class="font-medium text-gray-900 sm:flex sm:justify-between">
+                        <h5> <strong> <%= booking.user.first_name %> <%= booking.user.last_name %></strong></h5>
+                        <p class="mt-2 sm:mt-0">$<%= @friend.price %>/ day</p>
+                      </div>
+                      <p class="hidden text-gray-500 sm:block sm:mt-2"><%= booking.user.email %></p>
+                    </div>
+                  </div>
+
+                  <div class="mt-6 sm:flex sm:justify-between">
+                    <div class="flex items-center">
+                      <%= simple_form_for [booking.friend, booking], data: { controller: 'autosave' } do |f| %>
+
+                        <%= f.input :status, collection: Booking::STATUS, selected: booking.status || Booking::STATUS.first, data: { action: 'click->autosave#save' } %>
+                        <%= f.submit class: "py-2 px-6 bg-dark-purple text-azure-white rounded" %>
+
+                      <% end %>
+                      </div>
+
+                    <div class="mt-6 border-t border-gray-200 pt-4 flex items-center space-x-4 divide-x divide-gray-200 text-sm font-medium sm:mt-0 sm:ml-4 sm:border-none sm:pt-0">
+                      <div class="flex-1 flex justify-center">
+                      <%= link_to "View profile", friend_path(@friend), class: "text-indigo-600 whitespace-nowrap hover:text-indigo-500" %>
+                      </div>
+                    <%# %>
+
+
+
+                    </div>
+                  </div>
+                </li>
+
+                <!-- More products... -->
+              </ul>
+            </div>
+            <!-- More bookings... -->
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% else %>
+  <div class="max-w-7xl mx-auto py-16 sm:py-24">
+      <div class="max-w-2xl mx-auto px-4 lg:max-w-4xl lg:px-0">
+        <h1 class="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">You didn't receive any bookings yet...</h1>
+      </div>
+  </div>
+<% end %>
