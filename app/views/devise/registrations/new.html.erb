@@ -1,56 +1,64 @@
-<div class="container">
-<h2>Sign up</h2>
+<div class="flex min-h-full flex-col items-center justify-center px-6 py-12 lg:px-8">
+  <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+    <h2 class="mt-1 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Sign up</h2>
+  </div>
+  <div class="mt-6 sm:mx-auto sm:w-full sm:max-w-sm">
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= f.error_notification %>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+      <div class="mt-2 sm:mx-auto sm:w-full sm:max-w-sm">
+        <div class="mt-2">
+          <div class="mt-2">
+            <%= f.input :first_name,
+              required: true,
+              autofocus: true,
+              input_html: { autocomplete: "first_name",
+              class: "block w-full rounded-md border-0 py-2 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-400 sm:text-sm sm:leading-6" } %>
+          </div>
 
-  <div class="form-inputs">
-  <div class="row">
-      <div class="col">
+          <div class="mt-2">
+            <%= f.input :last_name,
+              required: true,
+              input_html: { autocomplete: "last_name",
+              class: "block w-full rounded-md border-0 py-2 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" } %>
+          </div>
+        </div>
 
-      <%= f.input :first_name,
-                  required: true,
-                  autofocus: true,
-                  input_html: { autocomplete: "first_name" }%>
-      </div>
+        <%= f.input :birth_date,
+            required: true,
+            start_year: Time.now.year - 100,
+            end_year: Time.now.year - 18,
+            input_html: { class: "block w-full rounded-md border-0 py-2 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6", autocomplete: "birth_date", data: { flatpickr_target: "birthDate" } },
+            wrapper_html: { class: "mt-10 sm:mx-auto sm:w-full sm:max-w-sm rounded-md" } %>
 
-      <div class="col">
-          <%= f.input :last_name,
+        <div class="mt-10">
+        <%= f.input :email,
           required: true,
-          input_html: { autocomplete: "last_name" }%>
-      </div>
+          input_html: { autocomplete: "email",
+          class: "block w-full rounded-md border-0 py-2 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" } %>
 
-    <%= f.input :birth_date,
-                required: true,
-                start_year: Time.now.year - 100,
-                end_year: Time.now.year - 18,
-                input_html: { autocomplete: "birth_date" }%>
-    <%= f.input :email,
-                required: true,
-                input_html: { autocomplete: "email" }%>
-  <div class="row">
-      <div class="col">
+          <div class="mt-2">
+            <%= f.input :password,
+              required: true,
+              hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+              input_html: { autocomplete: "new-password",
+              class: "block w-full rounded-md border-0 py-2 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"  }%>
+          </div>
 
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-      </div>
-
-      <div class="col">
+      <div class="mt-2">
 
     <%= f.input :password_confirmation,
                 required: true,
-                input_html: { autocomplete: "new-password" } %>
+                input_html: { autocomplete: "new-password", class: "block w-full rounded-md border-0 py-2 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" } %>
       </div>
       </div>
 
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up", class:"btn btn-primary w-100" %>
+  <div class="mt-2">
+    <%= f.button :submit, "Sign up", class:"btn btn-primary px-6 py-3 bg-light-purple text-azure-white w-full rounded-md mb-2 hover:bg-dark-purple transition-colors duration-300" %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+  <% end %>
+   <%= render "devise/shared/links"%>
+  </div>
 </div>

@@ -1,9 +1,9 @@
 <%- if controller_name != 'sessions' %>
-  <%= link_to "Sign in", new_session_path(resource_name), class: "btn btn-secondary w-100 mt-3" %><br />
+  <%= link_to "Sign in", new_session_path(resource_name), class: "btn btn-secondar text-light-purple w-100 mt-3 mb-6" %><br />
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= link_to "Sign up", new_registration_path(resource_name), class: "btn btn-secondary w-100 mt-3" %><br />
+  <%= link_to "Sign up", new_registration_path(resource_name), class: "btn btn-secondary text-light-purple w-100 mt-3" %><br />
 <% end %>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
