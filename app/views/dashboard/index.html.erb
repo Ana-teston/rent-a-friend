@@ -71,21 +71,21 @@
                   <div class="mt-6 sm:flex sm:justify-between">
                     <div class="flex items-center">
                       <!-- Heroicon name: solid/check-circle -->
-                      <% if booking.status == "Pending" %>
+                      <% if booking.booking_status == "Pending" %>
                         <i class="far fa-hourglass" style="color: #627500;"></i>
-                        <p class="ml-2 text-sm font-medium text-gray-500"><%= booking.status %></p>
-                      <% elsif booking.status == "Confirmed" %>
+                        <p class="ml-2 text-sm font-medium text-gray-500"><%= booking.booking_status %></p>
+                      <% elsif booking.booking_status == "Confirmed" %>
 
                       <i class="fas fa-check" style="color: #00ff11;"></i>
-                      <p class="ml-2 text-sm font-medium text-gray-500"><%= booking.status %></p>
-                      <% elsif booking.status == "Finished" %>
+                      <p class="ml-2 text-sm font-medium text-gray-500"><%= booking.booking_status %></p>
+                      <% elsif booking.booking_status == "Finished" %>
 
                     <i class="far fa-calendar-check" style="color: #005eff;"></i>
-                      <p class="ml-2 text-sm font-medium text-gray-500"><%= booking.status %></p>
-                      <% elsif booking.status == "Canceled" %>
+                      <p class="ml-2 text-sm font-medium text-gray-500"><%= booking.booking_status %></p>
+                      <% elsif booking.booking_status == "Canceled" %>
 
                       <i class="fas fa-ban" style="color: #ff0000;"></i>
-                      <p class="ml-2 text-sm font-medium text-gray-500"><%= booking.status %></p>
+                      <p class="ml-2 text-sm font-medium text-gray-500"><%= booking.booking_status %></p>
                       <% end %>
                     </div>
 
@@ -202,7 +202,7 @@
                     <div class="flex items-center">
                       <%= simple_form_for [booking.friend, booking], data: { controller: 'autosave', autosave_delay_value: '1000'} do |f| %>
 
-                        <%= f.input :status, collection: Booking::STATUS, selected: booking.status || Booking::STATUS.first, input_html: { data: { action: 'change->autosave#save' } } %>
+                        <%= f.input :status, collection: Booking::STATUS, selected: booking.booking_status || Booking::STATUS.first, input_html: { data: { action: 'change->autosave#save' } } %>
 
                       <% end %>
                       </div>

@@ -5,7 +5,7 @@ class Booking < ApplicationRecord
   validates :activity, :start_date, :end_date, presence: true
 
   STATUS = ['Pending', 'Confirmed', 'Finished', 'Canceled'].freeze
-  validates :status, presence: true
+  validates :booking_status, presence: true
 
   def start_date_before_end_date
     return if start_date.blank? || end_date.blank?
