@@ -138,7 +138,7 @@ User.all.each do |user|
     num_of_days: (friend.end_date - friend.start_date).to_i,
     user: user,
     friend: friend,
-    status: Booking::STATUS.sample)
+    booking_status: Booking::STATUS.sample)
   end
 end
 
