@@ -8,14 +8,14 @@
 </head>
 <body>
 
-  <div class="containe mx-auto">
+  <div class="container mx-auto">
     <div class="mt-10" style="margin-top: 6rem;">
       <h1 class="text-center mt-10 mb-4 text-7xl font-extrabold text-rich-black">All Your <span class="text-light-purple">Friends</span> 🫶</h1>
     </div>
     <div class="flex justify-center">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         <% @friends.each do |friend| %>
-          <div class="group relative p-4 border border-gray-200 rounded-lg shadow-md bg-white-grey w-64">
+          <div class="group relative p-4 border border-light-purple border-opacity-10 rounded-lg shadow-lg bg-white-grey w-64">
             <% if friend.image.attached? %>
               <div class="rounded-lg overflow-hidden bg-gray-200 aspect-w-1 aspect-h-1 group-hover:opacity-75">
                 <%= image_tag friend.image.url, class: "w-full h-full object-center object-cover" %>
@@ -33,7 +33,7 @@
                 <p class="mt-4 text-base font-medium text-rich-black"><i class="fas fa-dollar-sign"></i> <%= friend.price %></p>
               </div>
               <div class="mt-4">
-                <%= link_to "More info", friend_path(friend.id), class: "card-button text-decoration-none rounded-md bg-indigo-600" %>
+                <%= link_to "More info", friend_path(friend.id), class: "px-6 py-3 text-azure-white bg-light-purple rounded-lg hover:bg-dark-purple transition-colors duration-300" %>
               </div>
             </div>
           </div>
