@@ -8,7 +8,7 @@
           data-transition-leave-to="opacity-0 translate-x-6"
         >
           <div
-            class="w-25 bg-white shadow-lg pointer-events-auto rounded-lg shadow-xs overflow-hidden p-4"
+            class="w-25 bg-white shadow-lg pointer-events-auto rounded-lg shadow-xs overflow-hidden p-4" style="width:25%"
           >
             <div class="flex items-start">
               <svg
@@ -71,28 +71,14 @@
           data-transition-leave-to="opacity-0 translate-x-6"
         >
           <div
-            class="w-25 bg-white shadow-lg pointer-events-auto rounded-lg shadow-xs overflow-hidden p-4"
+            class="w-25 bg-red-300 shadow-lg pointer-events-auto rounded-lg shadow-xs overflow-hidden p-4" style="width:25%"
           >
             <div class="flex items-start">
-              <svg
-                class="h-6 w-6 text-green-400"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
+            <i class="fas fa-times-circle"></i>
 
               <div class="ml-3 w-0 flex-1 pt-0.5">
                 <p class="text-sm font-medium text-gray-900">
-                Success
+                Error
                 </p>
                 <p class="mt-1 text-sm text-gray-500">
                   <%= alert %>

@@ -71,10 +71,22 @@
                   <div class="mt-6 sm:flex sm:justify-between">
                     <div class="flex items-center">
                       <!-- Heroicon name: solid/check-circle -->
-                      <svg class="w-5 h-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                      </svg>
+                      <% if booking.status == "Pending" %>
+                        <i class="far fa-hourglass" style="color: #627500;"></i>
+                        <p class="ml-2 text-sm font-medium text-gray-500"><%= booking.status %></p>
+                      <% elsif booking.status == "Confirmed" %>
+
+                      <i class="fas fa-check" style="color: #00ff11;"></i>
                       <p class="ml-2 text-sm font-medium text-gray-500"><%= booking.status %></p>
+                      <% elsif booking.status == "Finished" %>
+
+                    <i class="far fa-calendar-check" style="color: #005eff;"></i>
+                      <p class="ml-2 text-sm font-medium text-gray-500"><%= booking.status %></p>
+                      <% elsif booking.status == "Canceled" %>
+
+                      <i class="fas fa-ban" style="color: #ff0000;"></i>
+                      <p class="ml-2 text-sm font-medium text-gray-500"><%= booking.status %></p>
+                      <% end %>
                     </div>
 
                     <div class="mt-6 border-t border-gray-200 pt-4 flex items-center space-x-4 divide-x divide-gray-200 text-sm font-medium sm:mt-0 sm:ml-4 sm:border-none sm:pt-0">
