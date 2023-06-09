@@ -6,12 +6,12 @@
     <%= simple_form_for [@friend, @booking, @review] do |f| %>
     <%= f.input :title, input_html: { autocomplete: "new-password", class: "block w-full rounded-md border-0 py-2 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" }%>
     <%= f.input :body, input_html: { "data-character-counter-target": "input", class: "block w-full rounded-md border-0 py-2 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"  } %>
-      <p class="mb-4 text-gray-300">
+      <p class="mb-4 text-gray-700">
         There are
         <strong data-character-counter-target="counter"></strong> characters in this textarea.
       </p>
-    <%= f.input :rating, input_html: { autocomplete: "new-password", class: "block w-full rounded-md border-0 py-2 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"} %>
-    <%= f.button :submit, 'Create Review', class: 'btn btn btn-primary px-6 py-3 bg-light-purple text-azure-white w-full rounded-md mb-2 hover:bg-dark-purple transition-colors duration-300' %>
+    <%= f.input :rating, input_html: { autocomplete: "new-password", class: "block w-full rounded-md border-0 py-2 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6", min:0, max:5} %>
+    <%= f.button :submit, 'Review', class: 'btn btn btn-primary px-6 py-3 bg-light-purple text-azure-white w-full rounded-md mb-2 hover:bg-dark-purple transition-colors duration-300' %>
   <% end %>
   </div>
 </div>
