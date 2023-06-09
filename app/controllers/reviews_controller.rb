@@ -21,14 +21,14 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to friend_path(@friend), notice: "Review successfully created"
     else
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity, alert: "Could not create a review"
     end
   end
 
   def destroy
     @review = Review.find(params[:id])
     @review.destroy
-    redirect_to friend_path(@review.friend)
+    redirect_to friend_path(@review.friend), notice: "Review successfully deleted"
     authorize @review
   end
 

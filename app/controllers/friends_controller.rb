@@ -47,7 +47,7 @@ class FriendsController < ApplicationController
     if @friend.save
       redirect_to friend_path(@friend), notice: "Friend created successfully"
     else
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity, alert: "Could not create a friend"
     end
   end
 
@@ -56,7 +56,7 @@ class FriendsController < ApplicationController
     @friend.destroy
 
     authorize @friend
-    redirect_to friends_path, notice: "Deleted"
+    redirect_to friends_path, notice: "Friend deleted successfully"
   end
 
   private
