@@ -23,3 +23,7 @@ application.register('notification', Notification)
 
 import CharacterCounter from 'stimulus-character-counter'
 application.register('character-counter', CharacterCounter)
+
+import Reveal from 'stimulus-reveal-controller'
+application.register('reveal', Reveal)
+

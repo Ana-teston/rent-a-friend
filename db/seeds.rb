@@ -42,11 +42,11 @@ interests = [
 ]
 # give me an array of random bio
 bios = [
-  "I am a very friendly person and I love meeting new people. I am very passionate about my city and I would love to show you around!",
+  "I am very passionate about my city and I would love to show you around!",
   "I am a student and I love to travel. I am very friendly and I love meeting new people. I am very passionate about my city and I would love to show you around!",
   "I am a very nice person and I love meeting new people.",
   "Hello! I am a very friendly person and I love meeting new people. I am very passionate about my city and I would love to show you around!",
-  "I am a very friendly person and I love meeting new people. I am very passionate about my city and I would love to show you around! I am a very friendly person and I love meeting new people. I am very passionate about my city and I would love to show you around!",
+  "I am a very friendly person and I love meeting new people. ",
 ]
 
 # give me an array of random people's face from the internet

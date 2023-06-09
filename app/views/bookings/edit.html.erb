@@ -1,13 +1,18 @@
-<div class="container">
-<%= simple_form_for [@friend, @booking], data: { controller: 'flatpickr' } do |f| %>
-  <div class="row">
-      <div class="col">
-        <%= f.input :start_date, as: :string, input_html: { data: { flatpickr_target: "startTime" } } %>
+<div class="flex min-h-full flex-col items-center justify-center px-6 py-12 lg:px-8">
+<div class="sm:mx-auto sm:w-full sm:max-w-sm">
+    <h2 class="mt-12 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Edit your booking!</h2>
+  </div>
+  <div class="mt-6 sm:mx-auto sm:w-full sm:max-w-sm">
+  <%= simple_form_for [@friend, @booking], data: { controller: 'flatpickr' } do |f| %>
+  <div class="mt-2">
+      <div class="mt-2">
+        <%= f.input :start_date, as: :string, input_html: { data: { flatpickr_target: "startTime" }, class: "block w-full rounded-md border-0 py-2 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" } %>
       </div>
-      <div class="col">
-        <%= f.input :end_date, as: :string, input_html: { data: { flatpickr_target: "endTime" } } %>
+      <div class="mt-2">
+        <%= f.input :end_date, as: :string, input_html: { data: { flatpickr_target: "endTime" }, class: "block w-full rounded-md border-0 py-2 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" } %>
       </div>
     </div>
-  <%= f.button :submit, class:"btn btn-primary" %>
+  <%= f.button :submit, class:"btn btn-primary px-6 py-3 bg-light-purple text-azure-white w-full rounded-md mb-2 hover:bg-dark-purple transition-colors duration-300" %>
 <% end %>
+  </div>
 </div>

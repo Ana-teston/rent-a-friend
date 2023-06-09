@@ -1147,6 +1147,11 @@ stimulus-rails-autosave@^4.1.1:
   dependencies:
     lodash.debounce "^4.0.8"
 
+stimulus-reveal-controller@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/stimulus-reveal-controller/-/stimulus-reveal-controller-4.1.0.tgz#bf0fb4c2706f22d41544b5b02e2fbd794f608575"
+  integrity sha512-cPpTLV/+IQgiE+J3iBMjf3kD3H9ZOeoRJjyhvcsjyPE82mdcsuWxlzpI1pwSJPN66qSud4hVkhNH5w4xadyOfA==
+
 stimulus-use@^0.51.1:
   version "0.51.3"
   resolved "https://registry.yarnpkg.com/stimulus-use/-/stimulus-use-0.51.3.tgz#d7ac671aff8d0db253296dec89d38aa6f4b27e2a"
