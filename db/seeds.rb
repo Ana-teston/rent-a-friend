@@ -152,10 +152,34 @@ booking = Booking.all
 user = User.all
 friend = Friend.all
 
-10.times do
+# give me an array of real reviews some bad and others nice
+
+
+
+reviews = [
+  "I had a great time with them! they was very friendly and they showed me around the city. I would definitely recommend him!",
+  "Did'nt like it at all. they was very rude and they did not show me around the city. I would not recommend him!",
+  "I really enjoyed my time with them. I would definitely recommend him!",
+  "They were very rude and they did not show me around the city. I would not recommend them!",
+  "I wish I could give them 10 stars! I had a great time with them. I would definitely recommend him!",
+  "I did not enjoy my time with them. I would not recommend him!",
+  # give me other ones
+]
+
+# i need the review title with it
+title = [
+  "Great time!",
+  "Not a good time",
+  "Amazing!",
+  "Not so good",
+  "I wish I could give them 10 stars!",
+  "I did not enjoy my time"
+]
+
+30.times do
 Review.create!(
-  title: Faker::Lorem.sentence(word_count: 3),
-  body: Faker::Lorem.paragraph(sentence_count: 5),
+  title: title[rand(0..5)],
+  body: reviews[rand(0..5)],
   rating: rand(1..5),
   user: user[rand(0..9)],
   friend: friend[rand(0..9)],

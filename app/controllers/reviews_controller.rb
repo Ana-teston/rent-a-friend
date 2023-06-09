@@ -19,7 +19,6 @@ class ReviewsController < ApplicationController
     authorize @review
 
     if @review.save
-      @friends.reviews.order(date: :asc)
       redirect_to friend_path(@friend), notice: "Review successfully created"
     else
       render :new, status: :unprocessable_entity
