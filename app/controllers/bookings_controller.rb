@@ -10,7 +10,7 @@ class BookingsController < ApplicationController
     @booking.friend = @friend
     @booking.user = current_user
     @booking.activity = @friend.activity
-    @booking.booking_status ="Pending"
+    @booking.booking_status = "Pending"
     @booking.num_of_days = (Date.parse(params[:booking]["end_date"]) - Date.parse(params[:booking]["start_date"])).to_i
     authorize @booking
 

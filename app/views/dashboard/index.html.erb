@@ -202,7 +202,7 @@
                     <div class="flex items-center">
                       <%= simple_form_for [booking.friend, booking], data: { controller: 'autosave', autosave_delay_value: '1000'} do |f| %>
 
-                        <%= f.input :status, collection: Booking::STATUS, selected: booking.booking_status || Booking::STATUS.first, input_html: { data: { action: 'change->autosave#save' } } %>
+                        <%= f.input :bookin_status, collection: Booking::STATUS, selected: booking.booking_status || Booking::STATUS.first, input_html: { data: { action: 'change->autosave#save' } } %>
 
                       <% end %>
                       </div>
