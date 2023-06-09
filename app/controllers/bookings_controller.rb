@@ -33,7 +33,7 @@ class BookingsController < ApplicationController
 
   def update
     @booking = Booking.find(params[:id])
-    @booking.num_of_days = (Date.parse(params[:booking]["end_date"]) - Date.parse(params[:booking]["start_date"])).to_i
+    @booking.num_of_days = (Date.parse(params[:booking]["end_date"]) - Date.parse(params[:booking]["start_date"])).to_i unless params[:booking]["end_date"].nil?
     @booking.update(bookings_param)
     authorize @booking
 
