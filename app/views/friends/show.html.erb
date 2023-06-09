@@ -118,7 +118,7 @@
               <h3 class="sr-only">Customer Reviews</h3>
 
               <% @reviews.each do |review| %>
-                <div class="flex text-sm text-gray-500 space-x-4">
+                <div class="flex text-sm text-gray-500 space-x-4 border-b border-gray-300">
                   <div class="py-10">
                     <h3 class="font-medium text-gray-900">
                       <%= review.user.first_name %> <%= review.user.last_name %>
