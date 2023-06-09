@@ -14,9 +14,8 @@ class FriendsController < ApplicationController
     @friend = Friend.find(params[:id])
     @booking = Booking.new
     @review = Review.new
-    @reviews = Review.where(friend: params[:id])
-    @avg = @reviews.map { |review| review.rating }.sum / @reviews.length unless @reviews.empty?
-
+    @reviews = Review.where(friend: params[:id]).order(created_at: :desc)
+    @avg = (@reviews.map { |review| review.rating }.sum / @reviews.length).to_i unless @reviews.empty?
     @review.friend = @friend
     @review.booking = @booking
     authorize @friend
