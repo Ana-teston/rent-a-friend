@@ -12,7 +12,7 @@
     <div class="mt-10" style="margin-top: 6rem;">
       <h1 class="text-center mt-10 mb-4 text-7xl font-extrabold text-rich-black">All Your <span class="text-light-purple">Friends</span> 🫶</h1>
     </div>
-    <div class="flex justify-center">
+    <div class="flex justify-center mb-24">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         <% @friends.each do |friend| %>
           <div class="group relative p-4 border border-light-purple border-opacity-10 rounded-lg shadow-lg bg-white-grey w-64">
@@ -40,7 +40,7 @@
         <% end %>
       </div>
     </div>
-    <div style="width: 70vw; height: 400px;" data-controller="map" data-map-markers-value="<%= @markers.to_json %>" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+    <div style="width: 70vw; height: 400px;" data-controller="map" data-map-markers-value="<%= @markers.to_json %>" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" ></div>
   </div>
 </body>
 </html>
