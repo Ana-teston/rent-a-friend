@@ -4,7 +4,7 @@ class Booking < ApplicationRecord
   has_one :review, dependent: :destroy
   validates :activity, :start_date, :end_date, presence: true
 
-  STATUS = ['Pending', 'Confirmed', 'Finished', 'Canceled'].freeze
+  STATUS = %w[Pending Confirmed Finished Canceled].freeze
   validates :booking_status, presence: true
 
   def start_date_before_end_date
